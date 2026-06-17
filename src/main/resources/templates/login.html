@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head><title>Login - WoolCraft</title></head>
+<body>
+<div layout:fragment="content">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="glass-card p-5">
+                    <div class="text-center mb-4">
+                        <span style="font-size:3rem;">🧶</span>
+                        <h3 class="fw-bold mt-2">Welcome Back</h3>
+                        <p class="text-muted">Sign in to your WoolCraft account</p>
+                    </div>
+                    <div th:if="${error}" class="alert alert-danger">Invalid email or password</div>
+                    <div th:if="${param.registered}" class="alert alert-success">Registration successful! Please login.</div>
+                    <div th:if="${param.expired}" class="alert alert-warning">Session expired. Please login again.</div>
+                    <form method="post" th:action="@{/login}">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="username" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 glass-btn">Sign In</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <small class="text-muted">Don't have an account? <a href="/register">Register</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head><title>Contact Us - WoolCraft</title></head>
+<body>
+<div layout:fragment="content">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Get in Touch</h2>
+            <p class="text-muted">We'd love to hear from you</p>
+        </div>
+        <div th:if="${param.success}" class="alert alert-success">Message sent successfully! We'll get back to you soon.</div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-6">
+                <div class="glass-card p-5">
+                    <form method="post" th:action="@{/contact/send}" th:object="${contact}">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" th:field="*{name}" class="form-control" required>
+                            <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" th:field="*{email}" class="form-control" required>
+                            <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" th:field="*{phone}" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea th:field="*{message}" class="form-control" rows="5" required></textarea>
+                            <small th:if="${#fields.hasErrors('message')}" th:errors="*{message}" class="text-danger"></small>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 glass-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

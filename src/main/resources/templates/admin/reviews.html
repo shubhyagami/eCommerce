@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+<head><title>Reviews - WoolCraft Admin</title></head>
+<body>
+<div layout:fragment="content">
+    <h3 class="fw-bold mb-4"><i class="bi bi-star"></i> Pending Reviews</h3>
+    <div class="row g-4">
+        <div th:each="rev : ${reviews}" class="col-md-4">
+            <div class="glass-card p-4">
+                <div class="d-flex justify-content-between">
+                    <strong th:text="${rev.userName}">User</strong>
+                    <small class="text-muted" th:text="${rev.createdAt}">Date</small>
+                </div>
+                <div class="rating-stars">
+                    <span th:each="i : ${#numbers.sequence(1, 5)}">
+                        <i class="bi" th:classappend="${i <= rev.rating} ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+                    </span>
+                </div>
+                <p class="mt-2" th:text="${rev.comment}">Comment</p>
+                <div class="d-flex gap-2">
+                    <form method="post" th:action="@{/admin/reviews/approve/{id}(id=${rev.id})}" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-success"><i class="bi bi-check-lg"></i> Approve</button>
+                    </form>
+                    <form method="post" th:action="@{/admin/reviews/delete/{id}(id=${rev.id})}" style="display:inline;" onsubmit="return confirm('Delete review?')">
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-x-lg"></i> Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:if="${reviews == null or reviews.isEmpty()}" class="text-center py-5">
+        <i class="bi bi-check-circle text-success" style="font-size:3rem;"></i>
+        <p class="text-muted mt-2">No pending reviews.</p>
+    </div>
+</div>
+</body>
+</html>

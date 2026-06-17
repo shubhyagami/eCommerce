@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+<head><title>Categories - WoolCraft Admin</title></head>
+<body>
+<div layout:fragment="content">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold mb-0"><i class="bi bi-tags"></i> Categories</h3>
+        <button class="btn btn-primary glass-btn" data-bs-toggle="modal" data-bs-target="#categoryModal"><i class="bi bi-plus-lg"></i> Add Category</button>
+    </div>
+    <div class="glass-card p-4">
+        <table class="table table-hover align-middle">
+            <thead><tr><th>Name</th><th>Slug</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+                <tr th:each="cat : ${categories}">
+                    <td th:text="${cat.name}">Name</td>
+                    <td th:text="${cat.slug}">slug</td>
+                    <td><span class="badge" th:classappend="${cat.active} ? 'bg-success' : 'bg-danger'" th:text="${cat.active} ? 'Active' : 'Inactive'"></span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary edit-cat" data-id="${cat.id}" data-name="${cat.name}" data-active="${cat.active}"><i class="bi bi-pencil"></i></button>
+                        <form method="post" th:action="@{/admin/categories/delete/{id}(id=${cat.id})}" style="display:inline;" onsubmit="return confirm('Delete category?')">
+                            <button type="submit" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="categoryModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content glass-card">
+                <form method="post" th:action="@{/admin/categories/save}">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="catModalTitle">Add Category</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="catId">
+                        <div class="mb-3">
+                            <label class="form-label">Category Name</label>
+                            <input type="text" name="name" id="catName" class="form-control" required>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" name="active" class="form-check-input" value="true" id="catActive" checked>
+                            <label class="form-check-label">Active</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary glass-btn">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$('.edit-cat').click(function(){
+    $('#catId').val($(this).data('id'));
+    $('#catName').val($(this).data('name'));
+    $('#catActive').prop('checked', $(this).data('active') === true);
+    $('#catModalTitle').text('Edit Category');
+    $('#categoryModal').modal('show');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head><title th:text="${product.name} + ' - WoolCraft'">Product - WoolCraft</title></head>
+<body>
+<div layout:fragment="content">
+    <div class="container py-4">
+        <div th:if="${param.review_submitted}" class="alert alert-success">Review submitted! It will appear after admin approval.</div>
+        <div class="row g-4" th:object="${product}">
+            <div class="col-lg-6">
+                <div class="product-gallery glass-card p-3">
+                    <div class="main-image-wrap text-center mb-3">
+                        <img th:if="*{primaryImage != null}" th:src="@{'/uploads/' + *{primaryImage}}" class="img-fluid main-product-image" id="mainProductImage" alt="product" style="max-height:400px;object-fit:contain;">
+                        <div th:if="*{primaryImage == null}" style="height:400px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border-radius:12px;">
+                            <i class="bi bi-image" style="font-size:5rem;opacity:0.2;"></i>
+                        </div>
+                    </div>
+                    <div class="thumbnails d-flex gap-2 justify-content-center" th:if="*{images != null}">
+                        <img th:each="img : *{images}" th:src="@{'/uploads/' + ${img}}" class="thumbnail-img" onclick="document.getElementById('mainProductImage').src=this.src" style="width:70px;height:70px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;" onmouseover="this.style.borderColor='var(--primary-color)'" onmouseout="this.style.borderColor='transparent'">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="glass-card p-4">
+                    <h3 class="fw-bold" th:text="*{name}">Product Name</h3>
+                    <p class="text-muted" th:if="*{categoryName}" th:text="*{categoryName}">Category</p>
+                    <div class="rating-stars mb-3">
+                        <span th:each="i : ${#numbers.sequence(1, 5)}">
+                            <i class="bi" th:classappend="${i <= product.rating} ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+                        </span>
+                        <small class="text-muted ms-2" th:text="'(' + ${#numbers.formatDecimal(product.rating, 1, 1)} + ')'"></small>
+                    </div>
+                    <div class="mb-3">
+                        <span class="fs-3 fw-bold text-primary" th:text="'$' + ${#numbers.formatDecimal(product.discountPrice != null ? product.discountPrice : product.price, 1, 2)}"></span>
+                        <span class="text-muted ms-2" th:if="*{discountPrice != null}">
+                            <s th:text="'$' + ${#numbers.formatDecimal(product.price, 1, 2)}"></s>
+                        </span>
+                    </div>
+                    <p class="text-muted" th:text="*{description}">Description here.</p>
+                    <div class="mb-3">
+                        <span class="badge" th:classappend="*{stock > 0} ? 'bg-success' : 'bg-danger'" th:text="*{stock > 0} ? 'In Stock' : 'Out of Stock'"></span>
+                        <small class="text-muted ms-2" th:if="*{stock > 0}" th:text="*{stock} + ' available'"></small>
+                    </div>
+                    <div class="mb-3" th:if="*{stock > 0}">
+                        <label class="form-label">Quantity</label>
+                        <div class="input-group" style="width:140px;">
+                            <button class="btn btn-outline-secondary" type="button" onclick="changeQty(-1)">-</button>
+                            <input type="number" class="form-control text-center" id="qtyInput" value="1" min="1" th:max="*{stock}">
+                            <button class="btn btn-outline-secondary" type="button" onclick="changeQty(1)">+</button>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary flex-fill glass-btn" th:if="*{stock > 0}" onclick="addToCart(*{id})">
+                            <i class="bi bi-cart-plus"></i> Add to Cart
+                        </button>
+                        <button class="btn btn-outline-primary flex-fill glass-btn" th:if="*{stock > 0}" onclick="buyNow(*{id})">
+                            <i class="bi bi-lightning"></i> Buy Now
+                        </button>
+                        <button class="btn btn-outline-danger wishlist-btn" th:data-product-id="*{id}">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="glass-card p-4">
+                    <h4 class="fw-bold mb-4">Customer Reviews</h4>
+                    <div th:if="${reviews != null and !reviews.isEmpty()}">
+                        <div class="review-item mb-3" th:each="rev : ${reviews}">
+                            <div class="d-flex justify-content-between">
+                                <strong th:text="${rev.userName}">User</strong>
+                                <small class="text-muted" th:text="${rev.createdAt}">date</small>
+                            </div>
+                            <div class="rating-stars small">
+                                <span th:each="i : ${#numbers.sequence(1, 5)}">
+                                    <i class="bi" th:classappend="${i <= rev.rating} ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+                                </span>
+                            </div>
+                            <p class="mb-0" th:if="${rev.comment}" th:text="${rev.comment}">Comment</p>
+                            <img th:if="${rev.image}" th:src="@{'/uploads/' + ${rev.image}}" style="max-height:100px;border-radius:8px;margin-top:8px;">
+                            <hr>
+                        </div>
+                    </div>
+                    <div th:if="${reviews == null or reviews.isEmpty()}">
+                        <p class="text-muted">No reviews yet. Be the first to review!</p>
+                    </div>
+                    <div sec:authorize="isAuthenticated()">
+                        <h5 class="fw-bold mt-4">Write a Review</h5>
+                        <form method="post" th:action="@{/review/submit}" enctype="multipart/form-data">
+                            <input type="hidden" name="productId" th:value="${product.id}">
+                            <div class="mb-3">
+                                <label class="form-label">Rating</label>
+                                <div class="rating-input">
+                                    <span class="star" data-val="1">&#9733;</span>
+                                    <span class="star" data-val="2">&#9733;</span>
+                                    <span class="star" data-val="3">&#9733;</span>
+                                    <span class="star" data-val="4">&#9733;</span>
+                                    <span class="star" data-val="5">&#9733;</span>
+                                    <input type="hidden" name="rating" id="ratingVal" value="5">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Comment</label>
+                                <textarea name="comment" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Image (optional)</label>
+                                <input type="file" name="image" class="form-control" accept="image/*">
+                            </div>
+                            <button type="submit" class="btn btn-primary glass-btn">Submit Review</button>
+                        </form>
+                    </div>
+                    <div sec:authorize="!isAuthenticated()">
+                        <p class="text-muted mt-3"><a href="/login">Login</a> to write a review.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/product.js}"></script>
+</body>
+</html>

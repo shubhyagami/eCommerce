@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<footer th:fragment="footer" class="glass-footer mt-auto">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <h5 class="fw-bold"><span class="brand-icon">🧶</span> WoolCraft</h5>
+                <p class="text-muted small">Handmade woolen hair clips crafted with love and care. Each piece is unique, just like you.</p>
+                <div class="social-links">
+                    <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle me-2"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="btn btn-outline-secondary btn-sm rounded-circle me-2"><i class="bi bi-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <h6 class="fw-bold">Quick Links</h6>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="/" class="text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="/products" class="text-decoration-none">Products</a></li>
+                    <li class="mb-2"><a href="/contact" class="text-decoration-none">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h6 class="fw-bold">Categories</h6>
+                <ul class="list-unstyled small" th:if="${categories != null}">
+                    <li class="mb-2" th:each="cat : ${categories}">
+                        <a th:href="@{/products(category=${cat.id})}" class="text-decoration-none" th:text="${cat.name}">Category</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h6 class="fw-bold">Contact</h6>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><i class="bi bi-envelope me-2"></i>hello@woolcraft.com</li>
+                    <li class="mb-2"><i class="bi bi-telephone me-2"></i>+1 (555) 123-4567</li>
+                </ul>
+            </div>
+        </div>
+        <hr class="my-3">
+        <div class="text-center small text-muted">
+            &copy; 2026 WoolCraft. All rights reserved. Handmade with 🧶
+        </div>
+    </div>
+</footer>
+</body>
+</html>

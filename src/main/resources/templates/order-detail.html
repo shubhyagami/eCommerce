@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head><title>Order Details - WoolCraft</title></head>
+<body>
+<div layout:fragment="content">
+    <div class="container py-4">
+        <div th:if="${param.success}" class="alert alert-success">Order placed successfully!</div>
+        <div th:if="${order == null}">
+            <div class="glass-card text-center p-5">
+                <h5>Order not found</h5>
+                <a href="/orders" class="btn btn-primary glass-btn">View Orders</a>
+            </div>
+        </div>
+        <div th:if="${order != null}">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-bold mb-0">Order #<span th:text="${order.id}"></span></h3>
+                <span class="badge fs-6" th:classappend="|bg-${order.status == 'PENDING' ? 'warning' : order.status == 'PROCESSING' ? 'info' : order.status == 'SHIPPED' ? 'primary' : order.status == 'DELIVERED' ? 'success' : 'danger'}|" th:text="${order.status}"></span>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="glass-card p-4">
+                        <h5 class="fw-bold mb-3">Items</h5>
+                        <div class="d-flex align-items-center mb-3 pb-3 border-bottom" th:each="item : ${order.items}">
+                            <img th:if="${item.productImage}" th:src="@{'/uploads/' + ${item.productImage}}" style="width:60px;height:60px;object-fit:cover;border-radius:8px;" class="me-3">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-0" th:text="${item.productName}">Product</h6>
+                                <small class="text-muted" th:text="'Qty: ' + ${item.quantity}"></small>
+                            </div>
+                            <span class="fw-bold" th:text="'$' + ${#numbers.formatDecimal(item.subtotal, 1, 2)}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="glass-card p-4">
+                        <h5 class="fw-bold mb-3">Order Info</h5>
+                        <div class="mb-3">
+                            <small class="text-muted d-block">Order Date</small>
+                            <span th:text="${order.orderDate}">Date</span>
+                        </div>
+                        <div class="mb-3">
+                            <small class="text-muted d-block">Shipping to</small>
+                            <span th:text="${order.fullName}"></span><br>
+                            <small th:text="${order.address} + ', ' + ${order.city} + ', ' + ${order.state} + ' - ' + ${order.postalCode}"></small>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Subtotal</span>
+                            <span th:text="'$' + ${#numbers.formatDecimal(order.totalAmount, 1, 2)}"></span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Shipping</span>
+                            <span th:if="${order.shipping > 0}" th:text="'$' + ${#numbers.formatDecimal(order.shipping, 1, 2)}"></span>
+                            <span th:if="${order.shipping == 0}">FREE</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between fw-bold fs-5">
+                            <span>Total</span>
+                            <span th:text="'$' + ${#numbers.formatDecimal(order.grandTotal, 1, 2)}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="glass-card p-4">
+                    <h5 class="fw-bold mb-3">Order Timeline</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Order Placed — <span th:text="${order.orderDate}"></span></li>
+                        <li class="mb-2" th:if="${order.status == 'PROCESSING' or order.status == 'SHIPPED' or order.status == 'DELIVERED'}"><i class="bi bi-check-circle-fill text-success me-2"></i> Processing</li>
+                        <li class="mb-2" th:if="${order.status == 'SHIPPED' or order.status == 'DELIVERED'}"><i class="bi bi-check-circle-fill text-success me-2"></i> Shipped</li>
+                        <li class="mb-2" th:if="${order.status == 'DELIVERED'}"><i class="bi bi-check-circle-fill text-success me-2"></i> Delivered</li>
+                        <li th:if="${order.status == 'CANCELLED'}"><i class="bi bi-x-circle-fill text-danger me-2"></i> Cancelled</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

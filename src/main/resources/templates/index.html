@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head><title>WoolCraft - Handmade Woolen Hair Clips</title></head>
+<body>
+<div layout:fragment="content">
+
+    <section class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="display-3 fw-bold hero-title">Handcrafted <span class="text-gradient">Woolen</span> Hair Clips</h1>
+                    <p class="lead text-muted mb-4">Unique, handmade hair accessories crafted with premium wool. Each piece tells a story of tradition and creativity.</p>
+                    <div class="hero-cta">
+                        <a href="/products" class="btn btn-primary btn-lg glass-btn me-3">Shop Now</a>
+                        <a href="/contact" class="btn btn-outline-secondary btn-lg">Contact Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-visual">
+                        <div class="floating-card main-card">
+                            <div class="floating-icon">🧶</div>
+                            <p class="fw-bold mb-0">Woolen Clips</p>
+                            <small class="text-muted">100% Handmade</small>
+                        </div>
+                        <div class="floating-card card-2">
+                            <div class="floating-icon">🌸</div>
+                            <small>Floral</small>
+                        </div>
+                        <div class="floating-card card-3">
+                            <div class="floating-icon">🎀</div>
+                            <small>Bows</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section py-5" th:if="${categories != null and !categories.isEmpty()}">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Shop by Category</h2>
+                <p class="text-muted">Find your perfect style</p>
+            </div>
+            <div class="row g-3">
+                <div class="col-6 col-md" th:each="cat : ${categories}">
+                    <a th:href="@{/products(category=${cat.id})}" class="text-decoration-none">
+                        <div class="category-card glass-card text-center p-4">
+                            <div class="category-icon mb-2">🧶</div>
+                            <h6 class="fw-bold mb-0" th:text="${cat.name}">Category</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold mb-0">Featured Products</h2>
+                <a href="/products" class="btn btn-outline-primary glass-btn">View All</a>
+            </div>
+            <div class="row" th:if="${featuredProducts != null and !featuredProducts.isEmpty()}">
+                <th:block th:each="p : ${featuredProducts}">
+                    <div th:replace="~{fragments/product-card :: productCard(p)}"></div>
+                </th:block>
+            </div>
+            <div class="text-center py-5" th:if="${featuredProducts == null or featuredProducts.isEmpty()}">
+                <i class="bi bi-box-seam" style="font-size:3rem;opacity:0.3;"></i>
+                <p class="text-muted mt-3">No products yet. Check back soon!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section py-5 bg-light-section">
+        <div class="container">
+            <h2 class="fw-bold text-center mb-4">New Arrivals</h2>
+            <div class="row" th:if="${newArrivals != null and !newArrivals.isEmpty()}">
+                <th:block th:each="p : ${newArrivals}">
+                    <div th:replace="~{fragments/product-card :: productCard(p)}"></div>
+                </th:block>
+            </div>
+        </div>
+    </section>
+
+    <section class="section py-5" th:if="${bestSellers != null and !bestSellers.isEmpty()}">
+        <div class="container">
+            <h2 class="fw-bold text-center mb-4">Best Sellers</h2>
+            <div class="row">
+                <th:block th:each="p : ${bestSellers}">
+                    <div th:replace="~{fragments/product-card :: productCard(p)}"></div>
+                </th:block>
+            </div>
+        </div>
+    </section>
+
+    <section class="section py-5 bg-light-section">
+        <div class="container">
+            <h2 class="fw-bold text-center mb-4">What Our Customers Say</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card glass-card p-4">
+                        <div class="rating-stars mb-2">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="mb-2">"Absolutely love my floral clip! The craftsmanship is incredible and it's so lightweight."</p>
+                        <small class="fw-bold">— Sarah M.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card glass-card p-4">
+                        <div class="rating-stars mb-2">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                        <p class="mb-2">"Perfect for my daughter's birthday party. She got so many compliments!"</p>
+                        <small class="fw-bold">— Priya K.</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card glass-card p-4">
+                        <div class="rating-stars mb-2">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-half text-warning"></i>
+                        </div>
+                        <p class="mb-2">"The premium collection is truly premium. Worth every penny. Fast shipping too!"</p>
+                        <small class="fw-bold">— Emily R.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section newsletter-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="glass-card p-5">
+                        <h3 class="fw-bold mb-2">Stay in the Loop</h3>
+                        <p class="text-muted mb-4">Subscribe for exclusive offers, new arrivals, and handmade tips.</p>
+                        <form class="newsletter-form" onsubmit="return false;">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Enter your email" id="newsletterEmail">
+                                <button class="btn btn-primary glass-btn" type="button" onclick="subscribeNewsletter()">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+</body>
+</html>

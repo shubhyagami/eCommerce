@@ -1,0 +1,54 @@
+body {
+    background: var(--bg-color);
+}
+
+.sidebar {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-right: 1px solid var(--glass-border);
+    min-height: calc(100vh - var(--nav-height));
+}
+
+.admin-stats .glass-card {
+    border-radius: 16px;
+}
+
+.table th {
+    font-weight: 600;
+    border-bottom: 2px solid var(--glass-border);
+}
+
+.table td {
+    border-bottom: 1px solid var(--glass-border);
+    vertical-align: middle;
+}
+
+.btn-group-sm .btn {
+    border-radius: 8px !important;
+}
+
+.card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--glass-border);
+    border-radius: 20px 20px 0 0 !important;
+}
+
+.navbar .nav-link i {
+    margin-right: 6px;
+}
+
+.main-content {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 992px) {
+    .container-fluid {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}

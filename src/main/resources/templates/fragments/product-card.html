@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="productCard(item)" class="col-md-6 col-lg-3 mb-4" th:if="${item != null}">
+    <div class="card product-card h-100 glass-card">
+        <div class="product-image-wrap">
+            <div class="product-image-placeholder" th:if="${item.primaryImage == null}">
+                <i class="bi bi-image" style="font-size: 3rem; opacity:0.3;"></i>
+            </div>
+            <img th:if="${item.primaryImage != null}" th:src="@{'/uploads/' + ${item.primaryImage}}" class="card-img-top product-img" alt="product" th:alt="${item.name}">
+            <div class="product-overlay">
+                <a th:href="@{/products/{id}(id=${item.id})}" class="btn btn-light btn-sm glass-btn quick-view-btn">
+                    <i class="bi bi-eye"></i> Quick View
+                </a>
+                <a class="btn btn-outline-light btn-sm wishlist-btn" th:data-product-id="${item.id}">
+                    <i class="bi bi-heart"></i>
+                </a>
+            </div>
+            <span class="badge bg-danger position-absolute top-0 end-0 m-2" th:if="${item.discountPrice != null}">
+                Sale!
+            </span>
+        </div>
+        <div class="card-body text-center">
+            <h6 class="card-title fw-bold mb-1" th:text="${item.name}">Product Name</h6>
+            <p class="text-muted small mb-2" th:text="${item.categoryName}">Category</p>
+            <div class="mb-2">
+                <span class="text-muted" th:if="${item.discountPrice != null}">
+                    <s th:text="${#numbers.formatDecimal(item.price, 1, 2)}">$0.00</s>
+                </span>
+                <span class="fw-bold text-primary fs-5" th:text="'$' + ${#numbers.formatDecimal(item.discountPrice != null ? item.discountPrice : item.price, 1, 2)}">
+                    $0.00
+                </span>
+            </div>
+            <div class="rating-stars small mb-2">
+                <span th:each="i : ${#numbers.sequence(1, 5)}">
+                    <i class="bi" th:classappend="${i <= item.rating} ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+                </span>
+            </div>
+            <span class="badge" th:classappend="${item.stock > 0} ? 'bg-success' : 'bg-danger'">
+                <span th:text="${item.stock > 0} ? 'In Stock' : 'Out of Stock'"></span>
+            </span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

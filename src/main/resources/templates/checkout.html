@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/base}">
+<head><title>Checkout - WoolCraft</title></head>
+<body>
+<div layout:fragment="content">
+    <div class="container py-4">
+        <h3 class="fw-bold mb-4"><i class="bi bi-credit-card"></i> Checkout</h3>
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <div class="glass-card p-4">
+                    <h5 class="fw-bold mb-3">Shipping Information</h5>
+                    <form method="post" th:action="@{/checkout/place-order}" th:object="${order}">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" th:field="*{fullName}" class="form-control" required>
+                                <small th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="text-danger"></small>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Mobile Number</label>
+                                <input type="tel" th:field="*{mobile}" class="form-control" required>
+                                <small th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}" class="text-danger"></small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" th:field="*{email}" class="form-control" required>
+                            <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <textarea th:field="*{address}" class="form-control" rows="2" required></textarea>
+                            <small th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></small>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">City</label>
+                                <input type="text" th:field="*{city}" class="form-control" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">State</label>
+                                <input type="text" th:field="*{state}" class="form-control" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">Postal Code</label>
+                                <input type="text" th:field="*{postalCode}" class="form-control" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 glass-btn">Place Order</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="glass-card p-4">
+                    <h5 class="fw-bold mb-3">Order Summary</h5>
+                    <div class="mb-3" th:each="item : ${cart.items}">
+                        <div class="d-flex justify-content-between small mb-2">
+                            <span th:text="${item.productName} + ' x ' + ${item.quantity}">Item x 1</span>
+                            <span th:text="'$' + ${#numbers.formatDecimal(item.subtotal, 1, 2)}">$0.00</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Subtotal</span>
+                        <span th:text="'$' + ${#numbers.formatDecimal(cart.subtotal, 1, 2)}"></span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Shipping</span>
+                        <span th:text="${cart.subtotal >= 500} ? 'FREE' : '$9.99'"></span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between fw-bold fs-5">
+                        <span>Grand Total</span>
+                        <span th:text="'$' + ${#numbers.formatDecimal(cart.subtotal >= 500 ? cart.subtotal : cart.subtotal + 9.99, 1, 2)}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

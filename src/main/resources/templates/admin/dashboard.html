@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+<head><title>Dashboard - WoolCraft Admin</title></head>
+<body>
+<div layout:fragment="content">
+    <h3 class="fw-bold mb-4"><i class="bi bi-speedometer2"></i> Dashboard</h3>
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="glass-card p-4 text-center">
+                <i class="bi bi-box-seam fs-1 text-primary"></i>
+                <h2 class="fw-bold mt-2" th:text="${stats.totalProducts}">0</h2>
+                <p class="text-muted mb-0">Total Products</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-card p-4 text-center">
+                <i class="bi bi-truck fs-1 text-success"></i>
+                <h2 class="fw-bold mt-2" th:text="${stats.totalOrders}">0</h2>
+                <p class="text-muted mb-0">Total Orders</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-card p-4 text-center">
+                <i class="bi bi-people fs-1 text-info"></i>
+                <h2 class="fw-bold mt-2" th:text="${stats.totalCustomers}">0</h2>
+                <p class="text-muted mb-0">Customers</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-card p-4 text-center">
+                <i class="bi bi-envelope fs-1 text-warning"></i>
+                <h2 class="fw-bold mt-2" th:text="${stats.totalMessages}">0</h2>
+                <p class="text-muted mb-0">Messages</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="glass-card p-4">
+                <h5 class="fw-bold mb-3">Sales Overview</h5>
+                <canvas id="salesChart" style="height:300px;"></canvas>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="glass-card p-4">
+                <h5 class="fw-bold mb-3">Quick Actions</h5>
+                <div class="d-grid gap-2">
+                    <a href="/admin/products/new" class="btn btn-primary glass-btn">Add Product</a>
+                    <a href="/admin/orders" class="btn btn-outline-primary">View Orders</a>
+                    <a href="/admin/messages" class="btn btn-outline-primary">Messages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

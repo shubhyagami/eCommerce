@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+<head><title>Chat Rooms - WoolCraft Admin</title></head>
+<body>
+<div layout:fragment="content">
+    <h3 class="fw-bold mb-4"><i class="bi bi-chat-dots"></i> Support Chat</h3>
+    <div class="row g-4">
+        <div th:each="room : ${rooms}" class="col-md-4">
+            <div class="glass-card p-4">
+                <div class="d-flex align-items-center">
+                    <div class="flex-grow-1">
+                        <h6 class="fw-bold mb-1" th:text="${room.user.name}">Customer</h6>
+                        <small class="text-muted" th:text="${room.createdAt}">Date</small>
+                    </div>
+                    <a th:href="@{/admin/chat/room/{id}(id=${room.id})}" class="btn btn-primary btn-sm glass-btn">
+                        <i class="bi bi-chat"></i> Open
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:if="${rooms == null or rooms.isEmpty()}" class="text-center py-5">
+        <i class="bi bi-chat-dots" style="font-size:3rem;opacity:0.3;"></i>
+        <p class="text-muted mt-2">No chat rooms yet.</p>
+    </div>
+</div>
+</body>
+</html>

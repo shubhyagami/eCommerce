@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/layout}">
+<head><title>Customers - WoolCraft Admin</title></head>
+<body>
+<div layout:fragment="content">
+    <h3 class="fw-bold mb-4"><i class="bi bi-people"></i> Customers</h3>
+    <div class="glass-card p-4">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th><th>Status</th><th>Actions</th></tr>
+                </thead>
+                <tbody>
+                    <tr th:each="c : ${customers}">
+                        <td th:text="${c.name}">Name</td>
+                        <td th:text="${c.email}">Email</td>
+                        <td th:text="${c.phone}">Phone</td>
+                        <td th:text="${c.createdAt}">Date</td>
+                        <td>
+                            <span class="badge" th:classappend="${c.enabled} ? 'bg-success' : 'bg-danger'" th:text="${c.enabled} ? 'Active' : 'Disabled'"></span>
+                        </td>
+                        <td>
+                            <form method="post" th:action="@{/admin/customers/toggle/{id}(id=${c.id})}" style="display:inline;">
+                                <button type="submit" class="btn btn-sm" th:classappend="${c.enabled} ? 'btn-outline-danger' : 'btn-outline-success'">
+                                    <i class="bi" th:classappend="${c.enabled} ? 'bi-lock' : 'bi-unlock'"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
