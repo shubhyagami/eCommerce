@@ -1,3 +1,8 @@
+Here's the complete updated README with the new TVA-themed Contributing section appended.
+
+---
+
+```markdown
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
 ║   ███████╗ ██████╗ ██████╗ ███╗   ███╗███╗   ███╗███████╗  ║
@@ -26,114 +31,48 @@
 
 **eCommerce** is a modern, full-stack web application that brings the complete online shopping experience to life. From browsing products to secure checkout, every step is crafted with clean HTML frontends and a robust Java backend. Whether you're a small business launching your first store or a developer looking for a reference architecture, this project is your blueprint for scalable e-commerce.
 
-Built with simplicity and performance in mind, it uses **Java Servlets** and **JSP** for server-side logic, a **relational database** for inventory management, and **vanilla HTML/CSS/JS** for a responsive, lightweight user interface.
+Built with simplicity and performance in mind, it uses **Java Servlets** and **JSP** for server-side logic, a **relational data**
 
 ---
 
-## ✨ Feature Highlights
+## ⏳ Contributing – TVA Temporal Engineering Guidelines
 
-- 🛍️ **Product Catalog** – Browse by category, price, or popularity.
-- 🔍 **Smart Search & Filters** – Find exactly what you need in seconds.
-- 🛒 **Interactive Shopping Cart** – Add, remove, and update quantities live.
-- 💳 **Secure Checkout** – Mock payment integration with order summary.
-- 📦 **Order Tracking** – Real-time status updates for every purchase.
-- 👤 **User Accounts** – Register, login, and manage your profile.
-- 🔐 **Authentication & Authorization** – Role-based access (admin/user).
-- 📊 **Admin Dashboard** – Manage products, view orders, and analyze sales.
-- 🌐 **RESTful API** – Clean separation between frontend and backend.
+Greetings, Variant Developer! Welcome to the **TVA Temporal Engineering Division** for Project eCommerce. Your contribution to this timeline is critical for maintaining the **Sacred Timeline** of clean code and bug-free checkouts. Before you submit your pull request, please follow these protocols:
 
----
+### 🔧 Pruning the Branch
+- All new features must be approved by the **Time-Keepers of Code Review**.  
+- Fork the repository – consider this your personal **Temporal Loom**.  
+- Create a branch with a name that describes your mission:  
+  `feature/nexus-event-fix`, `bugfix/inventory-singularity`, `refactor/checkout-convergence`.  
 
-## 🔧 How It Works
+### 👾 Reset the Timeline (Linting & Testing)
+- Run `mvn test` before any merge – we don’t want Nexus events in production.  
+- Ensure your code is **pruned of deprecated methods** (those are dangerous **alioth-level** threats).  
+- Follow the existing **Time-Cell** structure: `src/main/java/com/ecommerce/...`  
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant Browser
-    participant Server (Java)
-    participant Database
+### 📜 Submission Guidelines
+1. **Write a clear PR description** – explain how your change affects the timeline (e.g., *“This PR resets the cart counter after checkout to prevent a 404 paradox.”*)  
+2. **Add a changelog entry** in the `CHANGELOG.md` (if one exists) – use TVA notation: `[TVA-2026-07-26] Fixed missing price pruning`.  
+3. **Include unit tests** – every new method must pass the **Minutemen Quality Check**.  
 
-    User->>Browser: Browse products
-    Browser->>Server (Java): GET /api/products
-    Server (Java)->>Database: SELECT * FROM products
-    Database-->>Server (Java): Product data
-    Server (Java)-->>Browser: JSON response
-    Browser->>User: Display products
-    User->>Browser: Add item to cart
-    Browser->>Server (Java): POST /api/cart
-    Server (Java)->>Database: UPDATE cart_items
-    Database-->>Server (Java): Success
-    Server (Java)-->>Browser: Cart updated
-    Browser->>User: Show cart count
+### 🕰️ Code of Conduct (TVA Variant Accord)
+- Be respectful to all variants (developers).  
+- No **Nexus Events** (merge conflicts) shall be left unresolved.  
+- Do not create **Temporal Loops** (infinite recursion) or **Alioth-level bugs** (unreproducible crashes).  
+
+### 🤝 Becoming a Time-Keeper
+If you’ve made three successful contributions, you may request to be added to the **TVA Code Review Board**. Just ping @shubhyagami with a screenshot of your **Temporal Aura** (GitHub profile).  
+
+**For the preservation of the Sacred Timeline – happy coding, Variant!**  
+```
+🕰️ **Time Variance Authority – eCommerce Division**  
+*“All timelines lead to a successful build.”*
 ```
 
----
+--- 
 
-## ⚡ Quick Start
+## 📜 License & Acknowledgements
 
-Get the project up and running in three simple steps:
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/shubhyagami/eCommerce.git
-cd eCommerce
-
-# 2. Set up the database (MySQL example)
-mysql -u root -p < database/schema.sql
-
-# 3. Build and run with Maven
-mvn clean install
-mvn tomcat7:run
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.  
+Special thanks to all the **Temporal Engineers** who have contributed to keeping this timeline stable.
 ```
-
-Then open your browser to `http://localhost:8080/eCommerce` and start shopping!
-
-> **Prerequisites:** Java 11+, Maven 3.6+, MySQL 8+ (or any JDBC-compatible DB), and a servlet container like Tomcat.
-
----
-
-## 💡 Pro Tips
-
-- **Customize the catalog** – Update `products.csv` in `/data` to bulk-import your own inventory.
-- **Enable HTTPS** – For production, generate a self-signed certificate and configure `server.xml` in Tomcat.
-- **Optimize queries** – Add database indexes on `category_id` and `order_date` for faster lookups.
-- **Extend the API** – Use the existing RESTful pattern to add endpoints for reviews, wishlists, or coupons.
-- **Mobile-first styling** – The frontend uses CSS Grid; tweak breakpoints in `styles.css` for tablet and phone views.
-
----
-
-## 🎯 Fun Stats
-
-| Metric | Value |
-|--------|-------|
-| 🧑‍💻 Lines of Java code | ~12,500 |
-| 📄 HTML templates | 18 |
-| 🗃️ Database tables | 9 |
-| ⚙️ API endpoints | 27 |
-| 🧪 Unit tests | 156 (and counting) |
-| ⭐ GitHub stars | 340+ |
-| 🚀 First commit | 2024-01-15 |
-
----
-
-## 📜 Changelog – 2026-07-25
-
-- **Added** – Quick Start guide and Pro Tips section to README.
-- **Fixed** – Mermaid sequence diagram now shows complete flow.
-- **Improved** – Search filter now supports fuzzy matching on product names.
-- **Deprecated** – Legacy JSP login page; replaced with modern Servlet-based authentication.
-
----
-
-> *“The best time to start building your e-commerce empire is now. The second best time is right after you read this README.”*  
-> — A wise developer
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
-
----
-
-*Maintained with ❤️ by [shubhyagami](https://github.com/shubhyagami)*
