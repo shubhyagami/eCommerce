@@ -32,116 +32,55 @@ Built with simplicity and performance in mind, it uses **Java Servlets** and **J
 
 ---
 
+## 📦 Quick Start Guide
+
+Initiate temporal deployment in your local environment with these sequential steps:
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/shubhyagami/eCommerce.git
+   cd eCommerce
+   ```
+
+2. **Configure the Database**
+   - Locate `src/main/resources/db.properties`.
+   - Update the connection string, username, and password to match your local SQL instance.
+   - Execute the provided `schema.sql` script to instantiate the database schema.
+
+3. **Deploy via Apache Tomcat**
+   - Build the project using Maven: `mvn clean package`
+   - Deploy the resulting `target/eCommerce.war` to your Tomcat server (`webapps` directory).
+   
+4. **Launch the Application**
+   - Navigate to `http://localhost:8080/eCommerce/` in your browser.
+   - Default Administrator credentials are provided in `config.properties`. Change them immediately upon first login.
+
+---
+
+## 🔧 Tech Stack & Infrastructure
+
+| Layer         | Technology                                 |
+|---------------|--------------------------------------------|
+| **Frontend**  | HTML5, CSS3, Vanilla JavaScript, Bootstrap |
+| **Backend**   | Java 11+, Servlets, JSP                    |
+| **Database**  | MySQL / PostgreSQL                         |
+| **Server**    | Apache Tomcat 9+                           |
+| **Build Tool**| Maven                                      |
+
+---
+
+## ✨ Weekly Highlight: The Temporal Cart System
+
+This week's architectural spotlight focuses on the **Temporal Cart System**. Built to survive the heat death of a universe (or at least a session timeout), the cart service intelligently synchronizes guest and user states. 
+
+When a variant user logs in, the TVA Temporal Loom seamlessly merges their guest cart items with their persistent database cart. No items are lost during the transition between timelines. This ensures a buttery-smooth checkout experience without duplicating quantities of the Infinity Stones.
+
+---
+
 ## ⏳ Contributing – TVA Temporal Engineering Guidelines
 
 Greetings, Variant Developer! Welcome to the **TVA Temporal Engineering Division** for Project eCommerce. Your contribution to this timeline is critical for maintaining the **Sacred Timeline** of clean code and bug-free checkouts. Before you submit your pull request, please follow these protocols:
 
 ### 🔧 Pruning the Branch
 - All new features must be approved by the **Time-Keepers of Code Review**.  
-- Fork the repository – consider this your personal **Temporal Loom**.  
-- Create a branch with a name that describes your mission:  
-  `feature/nexus-event-fix`, `bugfix/inventory-singularity`, `refactor/checkout-convergence`.  
-
-### 👾 Reset the Timeline (Linting & Testing)
-- Run `mvn test` before any merge – we don’t want Nexus events in production.  
-- Ensure your code is **pruned of deprecated methods** (those are dead timelines).  
-- Use the **Reset Charge** (rebase) to keep history linear and clean.  
-
-### 🕰️ Submit the Variant (Pull Request)
-- Open a PR against the `main` branch – the **Sacred Timeline**.  
-- Describe the anomaly you fixed or the new timeline you created.  
-- Tag at least one **TVA Analyst** (maintainer) for review.  
-
-### ⚖️ Code of Conduct
-- Follow the **TVA Directive**: Do not interfere with other timelines (other branches) without authorization.  
-- All code must be **Nexus-proof** – handle edge cases with grace.  
-- Remember: **Free will is an illusion** – but good commits are eternal.
-
----
-
-## 🧭 Quick Start Guide
-
-Get your own instance of the **eCommerce** timeline running in minutes.
-
-### Prerequisites
-- **Java 11+** (JDK)
-- **Apache Maven** (3.6+)
-- **MySQL** or **PostgreSQL** (or H2 for local dev)
-- A modern web browser (Chrome, Firefox, Edge)
-
-### Setup Steps
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/shubhyagami/eCommerce.git
-   cd eCommerce
-   ```
-
-2. **Configure the database**
-   - Create a database (e.g., `ecommerce_db`).
-   - Update `src/main/resources/application.properties` with your DB credentials.
-
-3. **Initialize the schema**
-   ```bash
-   mysql -u root -p ecommerce_db < src/main/resources/schema.sql
-   ```
-
-4. **Build and run**
-   ```bash
-   mvn clean install
-   mvn spring-boot:run   # or deploy the WAR to your servlet container
-   ```
-
-5. **Access the application**
-   - Open `http://localhost:8080` in your browser.
-   - Default admin credentials: `admin` / `admin123` (change in production!).
-
----
-
-## 💡 Pro Tips
-
-| Tip | Description |
-|-----|-------------|
-| **Cache Product Images** | Use a CDN or local caching layer to reduce load times by up to 60%. |
-| **Enable SSL** | Protect user data by enabling HTTPS in production – use Let’s Encrypt for free certificates. |
-| **Monitor with Prometheus** | Integrate Micrometer to track metrics like cart abandonment and checkout latency. |
-| **Use Database Indexes** | Add indexes on `product_id`, `user_id`, and `order_date` for faster queries. |
-| **Test with Real Data** | Populate your local DB with sample data from `data/demo.sql` to simulate a full catalog. |
-| **Containerize** | Run the app in Docker for consistent environments – a `Dockerfile` is included. |
-
----
-
-## 📊 Project Stats & Fun Facts
-
-- **Total commits:** 127 (and counting)
-- **Lines of code:** ~15,000 (Java), ~8,000 (HTML/CSS/JS)
-- **Supported browsers:** Chrome, Firefox, Safari, Edge
-- **Database queries optimized:** 23% reduction in average response time since v2.1
-- **Test coverage:** 84% (unit + integration)
-- **First commit:** 2025-03-14 (Pi Day – how fitting for a checkout module!)
-
----
-
-## 📅 Changelog – 2026-07-27
-
-### Added
-- New `Quick Start Guide` section in README – get up and running in 5 minutes.
-- `Pro Tips` section – optimization secrets from the TVA Temporal Engineers.
-- Project stats and fun facts – because even timelines deserve metrics.
-
-### Changed
-- Completed the TVA Contributing section (the timeline was cut off – fixed the anomaly).
-- Updated badge links to point to actual repository metrics.
-
-### Fixed
-- Minor formatting issues in the ASCII banner alignment.
-
----
-
-## 🤝 Acknowledgements
-
-This project is maintained by **shubhyagami** and the community of timeline engineers. Special thanks to the **Time-Keepers** for their relentless code reviews.
-
----
-
-*“In the end, all timelines converge on a single truth: well-tested code ships faster.”* – TVA Code of Conduct, Section 42
+- Fork the repository – consider this your personal **Tempo
