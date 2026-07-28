@@ -26,61 +26,45 @@
 
 ## 🚀 Project Description
 
-**eCommerce** is a modern, full-stack web application that brings the complete online shopping experience to life. From browsing products to secure checkout, every step is crafted with clean HTML frontends and a robust Java backend. Whether you're a small business launching your first store or a developer looking for a reference architecture, this project is your blueprint for scalable e-commerce.
-
-Built with simplicity and performance in mind, it uses **Java Servlets** and **JSP** for server-side logic, a **relational database** (MySQL/PostgreSQL) for persistence, and pure HTML/CSS/JavaScript for the client side. The application supports user authentication, product catalog management, shopping cart functionality, and order processing.
+**eCommerce** is a modern, full-stack web application that brings the complete online shopping experience to life. From browsing products to secure checkout, every step is crafted with clean HTML frontends and a robust Java backend. Whether you're a small business launchi
 
 ---
 
-## 📦 Quick Start Guide
+## ⏳ Contributing (TVA Edition)
 
-Initiate temporal deployment in your local environment with these sequential steps:
+Welcome, Variant! The **Temporal Variance Authority** (or eCommerce TVA) oversees all contributions to this timeline. By submitting a pull request, you agree to abide by the **Sacred Timeline** of code quality and help us prune any nexus events (bugs) before they branch into chaos.
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/shubhyagami/eCommerce.git
-   cd eCommerce
-   ```
+### 🛠️ How to Contribute
 
-2. **Configure the Database**
-   - Locate `src/main/resources/db.properties`.
-   - Update the connection string, username, and password to match your local SQL instance.
-   - Execute the provided `schema.sql` script to instantiate the database schema.
+1. **Fork the Repository** – Create your own divergent timeline (fork) on GitHub.
+2. **Create a Feature Branch** – Name it something meaningful, e.g., `feature/checkout-time-loop` or `fix/inventory-variant-616`.
+3. **Make Your Changes** – Keep commits clean and atomic. Every commit is a reset charge – use it wisely.
+4. **Run the Tests** – Ensure all existing tests pass. No one wants a multiversal war over a broken `pom.xml`.
+5. **Submit a Pull Request** – Target the `main` branch. A Minuteman (code reviewer) will inspect your timeline for anomalies.
 
-3. **Deploy via Apache Tomcat**
-   - Build the project using Maven: `mvn clean package`
-   - Deploy the resulting `target/eCommerce.war` to your Tomcat server (`webapps` directory).
-   
-4. **Launch the Application**
-   - Navigate to `http://localhost:8080/eCommerce/` in your browser.
-   - Default Administrator credentials are provided in `config.properties`. Change them immediately upon first login.
+### 📋 Contribution Guidelines
 
----
+- **Code Style** – Follow the style of the existing codebase. Inconsistent indentation is a temporal infraction.
+- **Commit Messages** – Use the imperative mood. Good: “Add product search API”. Bad: “Fixed stuff lol”.
+- **Documentation** – Update the README if your change affects the public interface. Ignorance of the sacred texts is not an excuse.
+- **No Nexus Events** – Do not introduce breaking changes without discussion. Open an issue first to propose a timeline alteration.
 
-## 🔧 Tech Stack & Infrastructure
+### 🕰️ Pull Request Process
 
-| Layer         | Technology                                 |
-|---------------|--------------------------------------------|
-| **Frontend**  | HTML5, CSS3, Vanilla JavaScript, Bootstrap |
-| **Backend**   | Java 11+, Servlets, JSP                    |
-| **Database**  | MySQL / PostgreSQL                         |
-| **Server**    | Apache Tomcat 9+                           |
-| **Build Tool**| Maven                                      |
+1. A **TVA Analyst** (automated CI) will review your code for linting, testing, and security vulnerabilities.
+2. A human **Minuteman** will perform a code review. They may request changes – don’t worry, that’s just a temporal adjustment.
+3. Once approved, your timeline will be **pruned** (merged) into the main timeline by an **Authorized Variant** (maintainer).
+4. Congratulations! Your variant code is now part of the sacred timeline. 🎉
 
----
+### 🏆 Recognition
 
-## ✨ Weekly Highlight: The Temporal Cart System
+Contributors who consistently prune nexus events and deliver clean code may be promoted to **TVA Hunter** status, gaining write access to the repo. Extraordinary variants might even receive a **Temporal Loom** badge (a mention in the project’s hall of fame).
 
-This week's architectural spotlight focuses on the **Temporal Cart System**. Built to survive the heat death of a universe (or at least a session timeout), the cart service intelligently synchronizes guest and user states. 
+### ⚠️ Warning
 
-When a variant user logs in, the TVA Temporal Loom seamlessly merges their guest cart items with their persistent database cart. No items are lost during the transition between timelines. This ensures a buttery-smooth checkout experience without duplicating quantities of the Infinity Stones.
+Attempts to introduce malicious code, spam, or unsolicited advertising will result in immediate **resetting** of your timeline (permanent ban). The TVA has no sense of humor about timeline integrity.
 
 ---
 
-## ⏳ Contributing – TVA Temporal Engineering Guidelines
-
-Greetings, Variant Developer! Welcome to the **TVA Temporal Engineering Division** for Project eCommerce. Your contribution to this timeline is critical for maintaining the **Sacred Timeline** of clean code and bug-free checkouts. Before you submit your pull request, please follow these protocols:
-
-### 🔧 Pruning the Branch
-- All new features must be approved by the **Time-Keepers of Code Review**.  
-- Fork the repository – consider this your personal **Tempo
+*“For all time. Always.”*  
+– The eCommerce TVA
