@@ -26,45 +26,94 @@
 
 ## 🚀 Project Description
 
-**eCommerce** is a modern, full-stack web application that brings the complete online shopping experience to life. From browsing products to secure checkout, every step is crafted with clean HTML frontends and a robust Java backend. Whether you're a small business launchi
+**eCommerce** is a modern, full-stack web application that brings the complete online shopping experience to life. From browsing products to secure checkout, every step is crafted with clean HTML frontends and a robust Java backend. Whether you're a small business launching its first digital storefront or a developer exploring enterprise patterns, this project provides a solid foundation with scalability and elegance in mind.
+
+Built with:
+- **Frontend:** HTML5, CSS3, Vanilla JavaScript (with future React/Vue plans)
+- **Backend:** Java (Spring Boot), RESTful APIs
+- **Database:** MySQL / PostgreSQL (with JPA/Hibernate)
+- **DevOps:** Docker, GitHub Actions (CI/CD)
 
 ---
 
-## ⏳ Contributing (TVA Edition)
+## 🔧 Getting Started
 
-Welcome, Variant! The **Temporal Variance Authority** (or eCommerce TVA) oversees all contributions to this timeline. By submitting a pull request, you agree to abide by the **Sacred Timeline** of code quality and help us prune any nexus events (bugs) before they branch into chaos.
+### Prerequisites
+- Java 17+ (JDK)
+- Maven 3.8+
+- Node.js 18+ (for optional frontend tooling)
+- Docker & Docker Compose (recommended for local DB)
 
-### 🛠️ How to Contribute
-
-1. **Fork the Repository** – Create your own divergent timeline (fork) on GitHub.
-2. **Create a Feature Branch** – Name it something meaningful, e.g., `feature/checkout-time-loop` or `fix/inventory-variant-616`.
-3. **Make Your Changes** – Keep commits clean and atomic. Every commit is a reset charge – use it wisely.
-4. **Run the Tests** – Ensure all existing tests pass. No one wants a multiversal war over a broken `pom.xml`.
-5. **Submit a Pull Request** – Target the `main` branch. A Minuteman (code reviewer) will inspect your timeline for anomalies.
-
-### 📋 Contribution Guidelines
-
-- **Code Style** – Follow the style of the existing codebase. Inconsistent indentation is a temporal infraction.
-- **Commit Messages** – Use the imperative mood. Good: “Add product search API”. Bad: “Fixed stuff lol”.
-- **Documentation** – Update the README if your change affects the public interface. Ignorance of the sacred texts is not an excuse.
-- **No Nexus Events** – Do not introduce breaking changes without discussion. Open an issue first to propose a timeline alteration.
-
-### 🕰️ Pull Request Process
-
-1. A **TVA Analyst** (automated CI) will review your code for linting, testing, and security vulnerabilities.
-2. A human **Minuteman** will perform a code review. They may request changes – don’t worry, that’s just a temporal adjustment.
-3. Once approved, your timeline will be **pruned** (merged) into the main timeline by an **Authorized Variant** (maintainer).
-4. Congratulations! Your variant code is now part of the sacred timeline. 🎉
-
-### 🏆 Recognition
-
-Contributors who consistently prune nexus events and deliver clean code may be promoted to **TVA Hunter** status, gaining write access to the repo. Extraordinary variants might even receive a **Temporal Loom** badge (a mention in the project’s hall of fame).
-
-### ⚠️ Warning
-
-Attempts to introduce malicious code, spam, or unsolicited advertising will result in immediate **resetting** of your timeline (permanent ban). The TVA has no sense of humor about timeline integrity.
+### Installation
+```bash
+git clone https://github.com/shubhyagami/eCommerce.git
+cd eCommerce
+mvn clean install
+docker-compose up -d   # launches MySQL and Redis
+mvn spring-boot:run
+```
+Open `http://localhost:8080` in your browser.
 
 ---
 
-*“For all time. Always.”*  
-– The eCommerce TVA
+## 📦 Features
+
+- ✅ Product catalog with search & filters
+- ✅ User authentication (JWT-based)
+- ✅ Shopping cart management (persistent)
+- ✅ Checkout with Stripe / PayPal integration
+- ✅ Admin dashboard for inventory & orders
+- ✅ Responsive design (mobile-first)
+- ✅ Secure payment processing
+
+---
+
+## 🧑‍💻 Contributing
+
+**ATTENTION, TIME VARIANT!**  
+You have been flagged as a potential nexus event in the timeline of this repository. To avoid being pruned, please adhere to the following **Sacred Timeline** guidelines for contributions:
+
+### 🔍 The Sacred Process
+1. **Check the Nexus Log** – Browse existing [Issues](https://github.com/shubhyagami/eCommerce/issues) to ensure you’re not creating a duplicate anomaly.
+2. **Create a Variant Branch** – Fork the repository and create a branch from `main` with a descriptive name (e.g., `fix/cart-quantity-bug`). No branching off your own reality without approval.
+3. **Submit a Temporal Pull Request** – Open a PR with a clear description of the timeline change you propose. Include:
+   - What **reality-altering bug** you fixed
+   - How you tested it (in which timeline)
+   - Any new **Loki-style** easter eggs you added (optional)
+4. **Await the Time-Keeper’s Review** – A TVA analyst will review your code. Be prepared to make **course corrections** if your contribution deviates from the Sacred Timeline.
+
+### ⚠️ Pruning Rules
+- **No broken branches** – All commits must pass the CI/CD **Minutemen** checks (build, tests, linting).
+- **No nexus events** – Do not introduce breaking changes without first discussing in an issue (you’ll be reset).
+- **No variants of existing code** – Duplicate functionality will be erased from existence.
+- **Commit messages must be timeline-compliant** – Use conventional commits (`feat:`, `fix:`, `chore:`, etc.).
+
+### 🛠 Local Development & Reset
+To reset your local timeline to match the sacred branch:
+```bash
+git checkout main
+git pull origin main
+git branch -D your-variant-branch   # prune it
+```
+
+### 🤝 Need Help?
+Contact the **Time Variance Authority** via [GitHub Discussions](https://github.com/shubhyagami/eCommerce/discussions) or tag @shubhyagami in an issue. We promise not to reset you unless absolutely necessary.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+
+---
+
+## ⭐ Acknowledgements
+
+- Icons by [Font Awesome](https://fontawesome.com/)
+- Inspiration from real-world e-commerce platforms
+- TVA operational manual for keeping the timeline intact
+- [Loki](https://www.marvel.com/tv-shows/loki/1) for reminding us that even variants can be useful
+
+---
+
+*Maintained by the **Time Variance Authority** (aka the dev team) – keeping this repo’s timeline pristine since 2026.*
