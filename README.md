@@ -1,93 +1,113 @@
-╔══════════════════════════════════════════════════════════════╗
-║                                                              ║
-║   ███████╗ ██████╗ ██████╗ ███╗   ███╗███╗   ███╗███████╗  ║
-║   ██╔════╝██╔════╝██╔═══██╗████╗ ████║████╗ ████║██╔════╝  ║
-║   █████╗  ██║     ██║   ██║██╔████╔██║██╔████╔██║█████╗    ║
-║   ██╔══╝  ██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║██╔══╝    ║
-║   ███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║███████╗  ║
-║   ╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚══════╝  ║
-║                                                              ║
-║   ╔═╗╔═╗╔═╗ ╔═╗╔═╗╔╗╔╔═╗╔═╗╔╦╗╦═╗╔═╗╔╦╗╔═╗                ║
-║   ║ ║╚═╗║  ║ ║║ ║║║║║ ╦╠═╣ ║ ╠╦╝╠═╣ ║ ║ ║                ║
-║   ╚═╝╚═╝╚═╝╚═╝╚═╝╝╚╝╚═╝╩ ╩ ╩ ╩╚═╩ ╩ ╩ ╚═╝                ║
-║                                                              ║
-║         🛒  Full-Stack E-Commerce Application  🛒             ║
-║            HTML Frontend · Java Backend · SQL                ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
+<h1 align="center">eCommerce</h1>
+<p align="center">A full-stack e-commerce application featuring an HTML frontend, Java Spring Boot backend, and PostgreSQL database.</p>
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/shubhyagami/eCommerce/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Stars](https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social)](https://github.com/shubhyagami/eCommerce)
-[![Last Commit](https://img.shields.io/github/last-commit/shubhyagami/eCommerce)](https://github.com/shubhyagami/eCommerce/commits/main)
-[![Repo Size](https://img.shields.io/github/repo-size/shubhyagami/eCommerce)](https://github.com/shubhyagami/eCommerce)
+<p align="center">
+  <a href="https://github.com/shubhyagami/eCommerce/actions"><img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build Status"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social" alt="Stars"></a>
+  <a href="https://github.com/shubhyagami/eCommerce/commits/main"><img src="https://img.shields.io/github/last-commit/shubhyagami/eCommerce" alt="Last Commit"></a>
+  <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/repo-size/shubhyagami/eCommerce" alt="Repo Size"></a>
+</p>
 
 ---
 
-## 🚀 Project Description
+## 📖 Overview
 
-**eCommerce** is a modern, full-stack web application that brings the complete online shopping experience to life. From browsing products to secure checkout, every step is crafted with clean HTML frontends and a robust Java backend. Whether you're a small business launching your first digital storefront or an enterprise merchant navigating the complexities of the multiverse, this project provides a solid, scaled foundation for your journey.
+**eCommerce** is a full-stack web application that provides a complete online shopping experience. From browsing products to secure checkout, the platform is built with clean HTML5 frontends and a robust Java backend. It serves as a solid foundation for small businesses or enterprise merchants needing a extensible storefront.
 
----
-
-## ⚙️ Quick-Start Guide
-
-To prune this branching timeline and get the application running locally on your sacred path, follow these decrees:
-
-1. **Clone the Repository:** `git clone https://github.com/shubhyagami/eCommerce.git`
-2. **Database Initialization:** Restore the provided SQL schema to your local PostgreSQL instance.
-3. **Backend Configuration:** Update the `application.properties` file with your database credentials and JWT secret.
-4. **Compile and Run:** Execute `mvn clean install` followed by `mvn spring-boot:run` to bring the Java backend online.
-5. **Frontend Launch:** Open the primary `index.html` in your browser via your preferred local server environment.
+### ✨ Key Features
+- **Secure Authentication**: JWT-based user login and registration.
+- **Product Cataloging**: RESTful API endpoints for product management and filtering.
+- **Responsive UI**: HTML5 layouts that adapt to mobile and desktop screens.
+- **Cart Management**: Session-based shopping cart persistence.
+- **Transaction History**: Database-backed order logging and user history.
 
 ---
 
-## 📅 Sacred Timeline Roadmap
+## 🚀 Getting Started
 
-*As decreed by the Time Variance Authority, this project is on a predetermined path of excellence. Variants attempting to derail this roadmap will be reset.*
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-### Phase 1: The Infinity Stones 🌌
-- [x] **Space Stone** — Establish secure user authentication
-- [x] **Mind Stone** — Implement intelligent product cataloging
-- [x] **Reality Stone** — Create responsive HTML5 UI layouts
-- [x] **Power Stone** — Deploy robust Java REST API endpoints
-- [x] **Time Stone** — Build transaction history logging
-- [ ] **Soul Stone** — Integrate personalized recommendation engine
+### Prerequisites
+- Java JDK 17 or later
+- Maven
+- PostgreSQL
+- A modern web browser
 
-### Phase 2: Quantum Realm Expansion 🔬
+### Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/shubhyagami/eCommerce.git
+   cd eCommerce
+   ```
+
+2. **Database Initialization:**
+   Restore the provided SQL schema to your local PostgreSQL instance.
+   ```bash
+   psql -U your_username -d your_database -f path/to/schema.sql
+   ```
+
+3. **Backend Configuration:**
+   Update the `src/main/resources/application.properties` file with your database credentials and a secure JWT secret.
+   ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/your_database
+   spring.datasource.username=your_username
+   spring.datasource.password=your_password
+   app.jwt.secret=your_secure_jwt_secret
+   ```
+
+4. **Compile and Run the Backend:**
+   Execute the following commands to build and launch the Java Spring Boot backend:
+   ```bash
+   mvn clean install
+   mvn spring-boot:run
+   ```
+
+5. **Launch the Frontend:**
+   Open the primary `index.html` file in your browser, or serve it via your preferred local static server environment.
+
+---
+
+## 🛣️ Roadmap
+
+- [x] Secure user authentication
+- [x] Product cataloging and REST API endpoints
+- [x] Responsive HTML5 UI layouts
+- [x] Transaction history logging
 - [x] Core database schema initialization
 - [x] Session-based cart persistence
-- [ ] Fix the `TemporalAnomalyException` thrown during checkout (PR #42)
-- [ ] Implement Hank Pym's fractal search algorithm for faster SKU indexing
-- [ ] Multi-variant payment gateway integration (Stark Industries Pay™)
-- [ ] Add WebAssembly support to survive the quantum tunneling
-
-### Phase 3: The Multiverse Protocol 🌍
-- [ ] **Timeline Loom Integration** — Auto-scaling Redis cache
-- [ ] **Miss Minutes AI Assistant** — Product help chatbot powered by LLMs
-- [ ] **Alioth Guardrails** — Anti-bot/DDoS protection layer
-- [ ] **Citadel at the End of Time** — Long-term cold storage & backup strategy
-- [ ] **Cross-Reality Sync** — GraphQL API for third-party storefront clients
-
-### Phase 4: The Kang Dynasty 👑
+- [ ] Fix checkout exception handling (PR #42)
+- [ ] Implement faster SKU indexing algorithms
+- [ ] Multi-provider payment gateway integration
+- [ ] Auto-scaling Redis cache layer
+- [ ] LLM-powered product help chatbot
+- [ ] Anti-bot/DDoS protection layer
 - [ ] Headless commerce architecture with decoupled frontend
-- [ ] AI-driven dynamic pricing based on temporal demand forecasting
-- [ ] Universal shopping cart sync across the multiverse
-- [ ] Zero-point energy server farm migration (hosting costs are getting out of hand)
-- [ ] Achieve "He Who Remains" certification: 100% uptime and immortality for the database
 
 ---
 
-## 📜 Temporal Changelog
-
-> *"For all time. Always."* — He Who Remains
+## 📝 Changelog
 
 **2026-08-07**
-- TVA Temporal Engineers successfully audited the primary build stability and verified the passing GitHub Actions pipelines.
-- README documentation synchronized with the Sacred Timeline formatting standards.
-- Monitoring the `TemporalAnomalyException` anomaly spike isolated in checkout branch PR #42; variants are advised to proceed with caution.
-- Cleaned timeline branches to prevent universe-splitting merge conflicts.
+- Verified build stability and passing GitHub Actions pipelines.
+- Cleaned documentation and updated formatting standards.
+- Isolated checkout branch anomaly (PR #42); further optimization and bug fixes are ongoing.
+- Pruned unused branches to prevent merge conflicts.
 
 ---
 
-> ⚠️ **TVA Notice:** Any deviations from this roadmap must be documented and submitted for review. Unscheduled feature branches may result in your timeline being reset at the end of time.
+## 🤝 Contributing
+
+Contributions are welcome! Please fork the repository and create a feature branch for your changes. Submit a pull request with a clear description of your improvements. Ensure all tests pass before submitting.
+```bash
+git checkout -b feature/AmazingFeature
+git commit -m 'Add some AmazingFeature'
+git push origin feature/AmazingFeature
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](https://opensource.org/licenses/MIT) file for details.
