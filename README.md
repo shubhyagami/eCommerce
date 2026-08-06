@@ -26,7 +26,19 @@
 
 ## 🚀 Project Description
 
-**eCommerce** is a modern, full-stack web application that brings the complete online shopping experience to life. From browsing products to secure checkout, every step is crafted with clean HTML frontends and a robust Java backend. Whether you're a small business launchi
+**eCommerce** is a modern, full-stack web application that brings the complete online shopping experience to life. From browsing products to secure checkout, every step is crafted with clean HTML frontends and a robust Java backend. Whether you're a small business launching your first digital storefront or an enterprise merchant navigating the complexities of the multiverse, this project provides a solid, scaled foundation for your journey.
+
+---
+
+## ⚙️ Quick-Start Guide
+
+To prune this branching timeline and get the application running locally on your sacred path, follow these decrees:
+
+1. **Clone the Repository:** `git clone https://github.com/shubhyagami/eCommerce.git`
+2. **Database Initialization:** Restore the provided SQL schema to your local PostgreSQL instance.
+3. **Backend Configuration:** Update the `application.properties` file with your database credentials and JWT secret.
+4. **Compile and Run:** Execute `mvn clean install` followed by `mvn spring-boot:run` to bring the Java backend online.
+5. **Frontend Launch:** Open the primary `index.html` in your browser via your preferred local server environment.
 
 ---
 
@@ -66,21 +78,16 @@
 
 ---
 
+## 📜 Temporal Changelog
+
+> *"For all time. Always."* — He Who Remains
+
+**2026-08-07**
+- TVA Temporal Engineers successfully audited the primary build stability and verified the passing GitHub Actions pipelines.
+- README documentation synchronized with the Sacred Timeline formatting standards.
+- Monitoring the `TemporalAnomalyException` anomaly spike isolated in checkout branch PR #42; variants are advised to proceed with caution.
+- Cleaned timeline branches to prevent universe-splitting merge conflicts.
+
+---
+
 > ⚠️ **TVA Notice:** Any deviations from this roadmap must be documented and submitted for review. Unscheduled feature branches may result in your timeline being reset at the end of time.
----
-
-### Temporal Update
-
-Auto-maintained entry for 2026-08-06 23:58 (eCommerce).
-
----
-
-### Temporal Update
-
-Auto-maintained entry for 2026-08-07 00:00 (eCommerce).
-
----
-
-### Temporal Update
-
-Auto-maintained entry for 2026-08-07 00:02 (eCommerce).
