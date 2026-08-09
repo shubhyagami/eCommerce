@@ -2,8 +2,8 @@
 <p align="center">A full-stack e-commerce application featuring an HTML5 frontend, Java Spring Boot backend, and PostgreSQL database.</p>
 
 <p align="center">
-  <a href="https://github.com/shubhyagami/eCommerce/actions"><img src="https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build" alt="Build Status"></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://github.com/shubhyagami/eCommerce/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build" alt="Build Status"></a>
+  <a href="https://github.com/shubhyagami/eCommerce/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social" alt="Stars"></a>
   <a href="https://github.com/shubhyagami/eCommerce/commits/main"><img src="https://img.shields.io/github/last-commit/shubhyagami/eCommerce" alt="Last Commit"></a>
   <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/repo-size/shubhyagami/eCommerce" alt="Repo Size"></a>
@@ -11,11 +11,11 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
-**eCommerce** is a full-stack web application that provides a complete online shopping experience. From browsing products to secure checkout, the platform is built with clean HTML5 frontends and a robust Java backend. It serves as a solid foundation for small businesses or enterprise merchants needing an extensible storefront.
+**eCommerce** is a full-stack web application that provides a complete online shopping experience. From browsing products to checkout, the platform is built with clean HTML5 frontends and a robust Java backend. It serves as a solid foundation for merchants needing an extensible storefront.
 
-### ✨ Key Features
+### Key Features
 - **Secure Authentication**: JWT-based user login and registration.
 - **Product Cataloging**: RESTful API endpoints for product management and filtering.
 - **Responsive UI**: HTML5 layouts that adapt to mobile and desktop screens.
@@ -24,9 +24,9 @@
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-Follow these instructions to get a local copy of the project up and running for development and testing purposes.
+Follow these instructions to get a local copy of the project up and running for development and testing.
 
 ### Prerequisites
 - Java JDK 17 or later
@@ -69,7 +69,7 @@ Follow these instructions to get a local copy of the project up and running for 
 
 ---
 
-## 🛣️ Roadmap
+## Roadmap
 
 - [x] Secure user authentication
 - [x] Product cataloging and REST API endpoints
@@ -87,19 +87,20 @@ Follow these instructions to get a local copy of the project up and running for 
 
 ---
 
-## 📝 Changelog
+## Changelog
 
 **2026-08-07**
 - Verified build stability and passing GitHub Actions pipelines.
 - Cleaned documentation and updated formatting standards.
-- Isolated checkout branch anomaly (PR #42); further optimization and bug fixes are ongoing.
+- Isolated checkout branch anomaly (PR #42); optimization and bug fixes ongoing.
 - Pruned unused branches to prevent merge conflicts.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please fork the repository and create a feature branch for your changes. Submit a pull request with a clear description of your improvements. Ensure all tests pass before submitting.
+
 ```bash
 git checkout -b feature/AmazingFeature
 git commit -m 'Add some AmazingFeature'
@@ -108,6 +109,6 @@ git push origin feature/AmazingFeature
 
 ---
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://opensource.org/licenses/MIT) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
