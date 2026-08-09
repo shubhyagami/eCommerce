@@ -1,8 +1,8 @@
 <h1 align="center">eCommerce</h1>
-<p align="center">A full-stack e-commerce application featuring an HTML frontend, Java Spring Boot backend, and PostgreSQL database.</p>
+<p align="center">A full-stack e-commerce application featuring an HTML5 frontend, Java Spring Boot backend, and PostgreSQL database.</p>
 
 <p align="center">
-  <a href="https://github.com/shubhyagami/eCommerce/actions"><img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build Status"></a>
+  <a href="https://github.com/shubhyagami/eCommerce/actions"><img src="https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build" alt="Build Status"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social" alt="Stars"></a>
   <a href="https://github.com/shubhyagami/eCommerce/commits/main"><img src="https://img.shields.io/github/last-commit/shubhyagami/eCommerce" alt="Last Commit"></a>
@@ -13,7 +13,7 @@
 
 ## 📖 Overview
 
-**eCommerce** is a full-stack web application that provides a complete online shopping experience. From browsing products to secure checkout, the platform is built with clean HTML5 frontends and a robust Java backend. It serves as a solid foundation for small businesses or enterprise merchants needing a extensible storefront.
+**eCommerce** is a full-stack web application that provides a complete online shopping experience. From browsing products to secure checkout, the platform is built with clean HTML5 frontends and a robust Java backend. It serves as a solid foundation for small businesses or enterprise merchants needing an extensible storefront.
 
 ### ✨ Key Features
 - **Secure Authentication**: JWT-based user login and registration.
@@ -26,7 +26,7 @@
 
 ## 🚀 Getting Started
 
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
+Follow these instructions to get a local copy of the project up and running for development and testing purposes.
 
 ### Prerequisites
 - Java JDK 17 or later
