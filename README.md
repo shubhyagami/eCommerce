@@ -7,6 +7,7 @@
   <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social" alt="Stars"></a>
   <a href="https://github.com/shubhyagami/eCommerce/commits/main"><img src="https://img.shields.io/github/last-commit/shubhyagami/eCommerce" alt="Last Commit"></a>
   <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/repo-size/shubhyagami/eCommerce" alt="Repo Size"></a>
+  <a href="https://github.com/shubhyagami/eCommerce/issues"><img src="https://img.shields.io/github/issues/shubhyagami/eCommerce" alt="Open Issues"></a>
 </p>
 
 ---
@@ -26,7 +27,7 @@
 
 ## Getting Started
 
-Follow these instructions to get a local copy of the project up and running for development and testing.
+Follow these instructions to set up a local copy of the project for development and testing. Make sure you have the following prerequisites installed before you begin:
 
 ### Prerequisites
 - Java JDK 17 or later
@@ -65,7 +66,7 @@ Follow these instructions to get a local copy of the project up and running for 
    ```
 
 5. **Launch the Frontend:**
-   Open the primary `index.html` file in your browser, or serve it via your preferred local static server environment.
+   Open the primary `index.html` file directly in your browser, or serve the directory using your preferred local static server environment.
 
 ---
 
