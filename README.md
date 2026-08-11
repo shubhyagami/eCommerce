@@ -1,33 +1,32 @@
 <h1 align="center">eCommerce</h1>
-<p align="center">A full-stack e-commerce application featuring an HTML5 frontend, Java Spring Boot backend, and PostgreSQL database.</p>
+<p align="center">A full-stack e-commerce application built with an HTML5 frontend, Java Spring Boot backend, and PostgreSQL database.</p>
 
 <p align="center">
   <a href="https://github.com/shubhyagami/eCommerce/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build" alt="Build Status"></a>
   <a href="https://github.com/shubhyagami/eCommerce/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-  <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social" alt="Stars"></a>
-  <a href="https://github.com/shubhyagami/eCommerce/commits/main"><img src="https://img.shields.io/github/last-commit/shubhyagami/eCommerce" alt="Last Commit"></a>
-  <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/repo-size/shubhyagami/eCommerce" alt="Repo Size"></a>
   <a href="https://github.com/shubhyagami/eCommerce/issues"><img src="https://img.shields.io/github/issues/shubhyagami/eCommerce" alt="Open Issues"></a>
+  <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/repo-size/shubhyagami/eCommerce" alt="Repo Size"></a>
+  <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social" alt="Stars"></a>
 </p>
 
 ---
 
 ## Overview
 
-**eCommerce** is a full-stack web application that provides a complete online shopping experience. From browsing products to checkout, the platform is built with clean HTML5 frontends and a robust Java backend. It serves as a solid foundation for merchants needing an extensible storefront.
+**eCommerce** is a full-stack web application providing a complete online shopping experience. From product browsing to checkout, the platform combines clean HTML5 frontends with a robust Java backend. It serves as a solid, extensible foundation for a standard storefront.
 
-### Key Features
-- **Secure Authentication**: JWT-based user login and registration.
-- **Product Cataloging**: RESTful API endpoints for product management and filtering.
-- **Responsive UI**: HTML5 layouts that adapt to mobile and desktop screens.
-- **Cart Management**: Session-based shopping cart persistence.
-- **Transaction History**: Database-backed order logging and user history.
+### Features
+- **Secure Authentication:** JWT-based user login and registration.
+- **Product Cataloging:** RESTful API endpoints for product management and filtering.
+- **Responsive UI:** HTML5 layouts that adapt to both mobile and desktop screens.
+- **Cart Management:** Session-based shopping cart persistence.
+- **Transaction History:** Database-backed order logging and user purchase history.
 
 ---
 
 ## Getting Started
 
-Follow these instructions to set up a local copy of the project for development and testing. Make sure you have the following prerequisites installed before you begin:
+Follow these instructions to set up a local copy of the project for development and testing. 
 
 ### Prerequisites
 - Java JDK 17 or later
@@ -59,14 +58,14 @@ Follow these instructions to set up a local copy of the project for development 
    ```
 
 4. **Compile and Run the Backend:**
-   Execute the following commands to build and launch the Java Spring Boot backend:
+   Execute the following commands to build and launch the Spring Boot backend:
    ```bash
    mvn clean install
    mvn spring-boot:run
    ```
 
 5. **Launch the Frontend:**
-   Open the primary `index.html` file directly in your browser, or serve the directory using your preferred local static server environment.
+   Open the primary `index.html` file directly in your browser, or serve the directory using a local static server.
 
 ---
 
