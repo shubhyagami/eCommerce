@@ -1,11 +1,10 @@
 <h1 align="center">eCommerce</h1>
-<p align="center">A full-stack e-commerce application built with an HTML5 frontend, Java Spring Boot backend, and PostgreSQL database.</p>
+<p align="center">A full-stack e-commerce application featuring an HTML5 frontend, Java Spring Boot backend, and PostgreSQL database.</p>
 
 <p align="center">
   <a href="https://github.com/shubhyagami/eCommerce/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build" alt="Build Status"></a>
   <a href="https://github.com/shubhyagami/eCommerce/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
   <a href="https://github.com/shubhyagami/eCommerce/issues"><img src="https://img.shields.io/github/issues/shubhyagami/eCommerce" alt="Open Issues"></a>
-  <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/repo-size/shubhyagami/eCommerce" alt="Repo Size"></a>
   <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social" alt="Stars"></a>
 </p>
 
@@ -65,7 +64,7 @@ Follow these instructions to set up a local copy of the project for development 
    ```
 
 5. **Launch the Frontend:**
-   Open the primary `index.html` file directly in your browser, or serve the directory using a local static server.
+   Open the primary `index.html` file directly in your browser, or serve the directory using a local static server such as Live Server.
 
 ---
 
@@ -89,11 +88,13 @@ Follow these instructions to set up a local copy of the project for development 
 
 ## Changelog
 
-**2026-08-07**
+**2026-08-12**
+- Reviewed and tidied up project documentation and formatting standards.
 - Verified build stability and passing GitHub Actions pipelines.
-- Cleaned documentation and updated formatting standards.
-- Isolated checkout branch anomaly (PR #42); optimization and bug fixes ongoing.
 - Pruned unused branches to prevent merge conflicts.
+
+**2026-08-07**
+- Isolated checkout branch anomaly (PR #42); optimization and bug fixes ongoing.
 
 ---
 
