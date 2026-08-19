@@ -1,5 +1,5 @@
 <h1 align="center">eCommerce</h1>
-<p align="center">A full-stack e-commerce application featuring an HTML5 frontend, Java Spring Boot backend, and PostgreSQL database.</p>
+<p align="center">A full-stack e-commerce application built with an HTML5 frontend, Java Spring Boot backend, and PostgreSQL database.</p>
 
 <p align="center">
   <a href="https://github.com/shubhyagami/eCommerce/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build" alt="Build Status"></a>
@@ -12,12 +12,12 @@
 
 ## Overview
 
-**eCommerce** is a full-stack web application providing a complete online shopping experience. From product browsing to checkout, the platform combines clean HTML5 frontends with a robust Java backend. It serves as a solid, extensible foundation for a standard storefront.
+**eCommerce** is a full-stack web application providing a standard online shopping experience. From product browsing to checkout, the platform combines a clean HTML5 frontend with a robust Java backend. It serves as an extensible foundation for a standard storefront.
 
 ### Features
 - **Secure Authentication:** JWT-based user login and registration.
 - **Product Cataloging:** RESTful API endpoints for product management and filtering.
-- **Responsive UI:** HTML5 layouts that adapt to both mobile and desktop screens.
+- **Responsive UI:** HTML5 layouts that adapt to mobile and desktop screens.
 - **Cart Management:** Session-based shopping cart persistence.
 - **Transaction History:** Database-backed order logging and user purchase history.
 
@@ -80,7 +80,6 @@ Follow these instructions to set up a local copy of the project for development 
 - [ ] Implement faster SKU indexing algorithms
 - [ ] Multi-provider payment gateway integration
 - [ ] Auto-scaling Redis cache layer
-- [ ] LLM-powered product help chatbot
 - [ ] Anti-bot/DDoS protection layer
 - [ ] Headless commerce architecture with decoupled frontend
 
@@ -88,8 +87,11 @@ Follow these instructions to set up a local copy of the project for development 
 
 ## Changelog
 
+**2026-08-19**
+- Cleaned up project documentation and formatting standards.
+- Updated README structure for clarity and easier navigation.
+
 **2026-08-12**
-- Reviewed and tidied up project documentation and formatting standards.
 - Verified build stability and passing GitHub Actions pipelines.
 - Pruned unused branches to prevent merge conflicts.
 
