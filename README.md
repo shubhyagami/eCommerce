@@ -1,31 +1,26 @@
-<h1 align="center">eCommerce</h1>
-<p align="center">A full-stack e-commerce application built with an HTML5 frontend, Java Spring Boot backend, and PostgreSQL database.</p>
+# eCommerce
 
-<p align="center">
-  <a href="https://github.com/shubhyagami/eCommerce/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build" alt="Build Status"></a>
-  <a href="https://github.com/shubhyagami/eCommerce/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
-  <a href="https://github.com/shubhyagami/eCommerce/issues"><img src="https://img.shields.io/github/issues/shubhyagami/eCommerce" alt="Open Issues"></a>
-  <a href="https://github.com/shubhyagami/eCommerce"><img src="https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social" alt="Stars"></a>
-</p>
+A full-stack e-commerce application featuring an HTML5 frontend, a Java Spring Boot backend, and a PostgreSQL database.
 
----
+[![Build Status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build)](https://github.com/shubhyagami/eCommerce/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/shubhyagami/eCommerce/blob/main/LICENSE)
+[![Open Issues](https://img.shields.io/github/issues/shubhyagami/eCommerce)](https://github.com/shubhyagami/eCommerce/issues)
+[![Stars](https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social)](https://github.com/shubhyagami/eCommerce)
 
 ## Overview
 
-**eCommerce** is a full-stack web application providing a standard online shopping experience. From product browsing to checkout, the platform combines a clean HTML5 frontend with a robust Java backend. It serves as an extensible foundation for a standard storefront.
+eCommerce is a web application that provides a standard online shopping experience. From product browsing to checkout, the platform combines a lightweight HTML5 frontend with a robust Java backend. It serves as an extensible foundation for building a standard storefront.
 
 ### Features
 - **Secure Authentication:** JWT-based user login and registration.
-- **Product Cataloging:** RESTful API endpoints for product management and filtering.
-- **Responsive UI:** HTML5 layouts that adapt to mobile and desktop screens.
+- **Product Catalog:** RESTful API endpoints for product management and filtering.
+- **Responsive UI:** HTML5 layouts that adapt to both mobile and desktop screens.
 - **Cart Management:** Session-based shopping cart persistence.
 - **Transaction History:** Database-backed order logging and user purchase history.
 
----
-
 ## Getting Started
 
-Follow these instructions to set up a local copy of the project for development and testing. 
+Follow these instructions to set up a local copy of the project for development and testing.
 
 ### Prerequisites
 - Java JDK 17 or later
@@ -41,13 +36,13 @@ Follow these instructions to set up a local copy of the project for development 
    cd eCommerce
    ```
 
-2. **Database Initialization:**
+2. **Initialize the Database:**
    Restore the provided SQL schema to your local PostgreSQL instance.
    ```bash
    psql -U your_username -d your_database -f path/to/schema.sql
    ```
 
-3. **Backend Configuration:**
+3. **Configure the Backend:**
    Update the `src/main/resources/application.properties` file with your database credentials and a secure JWT secret.
    ```properties
    spring.datasource.url=jdbc:postgresql://localhost:5432/your_database
@@ -56,7 +51,7 @@ Follow these instructions to set up a local copy of the project for development 
    app.jwt.secret=your_secure_jwt_secret
    ```
 
-4. **Compile and Run the Backend:**
+4. **Run the Backend:**
    Execute the following commands to build and launch the Spring Boot backend:
    ```bash
    mvn clean install
@@ -65,8 +60,6 @@ Follow these instructions to set up a local copy of the project for development 
 
 5. **Launch the Frontend:**
    Open the primary `index.html` file directly in your browser, or serve the directory using a local static server such as Live Server.
-
----
 
 ## Roadmap
 
@@ -83,22 +76,18 @@ Follow these instructions to set up a local copy of the project for development 
 - [ ] Anti-bot/DDoS protection layer
 - [ ] Headless commerce architecture with decoupled frontend
 
----
-
 ## Changelog
 
-**2026-08-19**
-- Cleaned up project documentation and formatting standards.
-- Updated README structure for clarity and easier navigation.
+**2026-08-20**
+- Refined README documentation for clarity and better navigation.
+- Verified build stability and passing GitHub Actions pipelines.
 
 **2026-08-12**
-- Verified build stability and passing GitHub Actions pipelines.
 - Pruned unused branches to prevent merge conflicts.
+- Updated project formatting standards.
 
 **2026-08-07**
 - Isolated checkout branch anomaly (PR #42); optimization and bug fixes ongoing.
-
----
 
 ## Contributing
 
@@ -109,8 +98,6 @@ git checkout -b feature/AmazingFeature
 git commit -m 'Add some AmazingFeature'
 git push origin feature/AmazingFeature
 ```
-
----
 
 ## License
 
