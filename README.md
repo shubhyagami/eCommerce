@@ -9,12 +9,12 @@ A full-stack e-commerce application featuring an HTML5 frontend, a Java Spring B
 
 ## Overview
 
-eCommerce is a web application that provides a standard online shopping experience. From product browsing to checkout, the platform combines a lightweight HTML5 frontend with a robust Java backend. It serves as an extensible foundation for building a standard storefront.
+eCommerce is a web application that implements a standard online shopping experience. From product browsing to checkout, the platform combines a lightweight HTML5 frontend with a robust Java backend. It provides an extensible foundation for building a storefront.
 
 ### Features
 - **Secure Authentication:** JWT-based user login and registration.
 - **Product Catalog:** RESTful API endpoints for product management and filtering.
-- **Responsive UI:** HTML5 layouts that adapt to both mobile and desktop screens.
+- **Responsive UI:** HTML5 layouts that adapt to mobile and desktop screens.
 - **Cart Management:** Session-based shopping cart persistence.
 - **Transaction History:** Database-backed order logging and user purchase history.
 
@@ -52,7 +52,7 @@ Follow these instructions to set up a local copy of the project for development 
    ```
 
 4. **Run the Backend:**
-   Execute the following commands to build and launch the Spring Boot backend:
+   Build and launch the Spring Boot backend:
    ```bash
    mvn clean install
    mvn spring-boot:run
