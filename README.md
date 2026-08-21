@@ -11,7 +11,8 @@ A full-stack e-commerce application featuring an HTML5 frontend, a Java Spring B
 
 eCommerce is a web application that implements a standard online shopping experience. From product browsing to checkout, the platform combines a lightweight HTML5 frontend with a robust Java backend. It provides an extensible foundation for building a storefront.
 
-### Features
+## Features
+
 - **Secure Authentication:** JWT-based user login and registration.
 - **Product Catalog:** RESTful API endpoints for product management and filtering.
 - **Responsive UI:** HTML5 layouts that adapt to mobile and desktop screens.
@@ -23,6 +24,7 @@ eCommerce is a web application that implements a standard online shopping experi
 Follow these instructions to set up a local copy of the project for development and testing.
 
 ### Prerequisites
+
 - Java JDK 17 or later
 - Maven
 - PostgreSQL
@@ -78,8 +80,11 @@ Follow these instructions to set up a local copy of the project for development 
 
 ## Changelog
 
+**2026-08-21**
+- Cleaned up and reorganized README structure for better readability.
+- Standardized setup instructions and feature descriptions.
+
 **2026-08-20**
-- Refined README documentation for clarity and better navigation.
 - Verified build stability and passing GitHub Actions pipelines.
 
 **2026-08-12**
