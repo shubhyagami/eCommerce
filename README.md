@@ -53,23 +53,20 @@ eCommerce is a web application designed to provide a standard online shopping ex
 * PostgreSQL
 * A modern web browser
 
-### Installation & Setup
-----------------------
+To set up the application, follow these steps:
 
-1. Clone the repository:
+1. **Clone the repository**: Download the latest version of the eCommerce repository to your local machine.
    ```bash
    git clone https://github.com/shubhyagami/eCommerce.git
    cd eCommerce
    ```
 
-2. Initialize the Database:
-   Restore the provided SQL schema to your local PostgreSQL instance.
+2. **Initialize the Database**: Restore the provided SQL schema to your local PostgreSQL instance.
    ```bash
    psql -U your_username -d your_database -f path/to/schema.sql
    ```
 
-3. Configure the Backend:
-   Update the `src/main/resources/application.properties` file with your database credentials and a secure JWT secret.
+3. **Configure the Backend**: Update the `src/main/resources/application.properties` file with your database credentials and a secure JWT secret.
    ```properties
    spring.datasource.url=jdbc:postgresql://localhost:5432/your_database
    spring.datasource.username=your_username
@@ -77,28 +74,35 @@ eCommerce is a web application designed to provide a standard online shopping ex
    app.jwt.secret=your_secure_jwt_secret
    ```
 
-4. Run the Backend:
-   Build and launch the Spring Boot backend:
+4. **Run the Backend**: Build and launch the Spring Boot backend.
    ```bash
    mvn clean install
    mvn spring-boot:run
    ```
 
-5. Launch the Frontend:
-   Open the primary `index.html` file directly in your browser, or serve the directory using a local static server such as Live Server.
+5. **Launch the Frontend**: Open the primary `index.html` file directly in your browser, or serve the directory using a local static server such as Live Server.
 
 ## Roadmap
 ----------
 
-* Fix checkout exception handling (PR #42)
-* Implement faster SKU indexing algorithms
-* Multi-provider payment gateway integration
-* Auto-scaling Redis cache layer
-* Anti-bot/DDoS protection layer
-* Headless commerce architecture with decoupled frontend
+Our upcoming development priorities include:
 
-## Changelog
-------------
+* Fixing checkout exception handling (PR #42)
+* Optimizing SKU indexing algorithms
+* Integrating a multi-provider payment gateway
+* Implementing an auto-scaling Redis cache layer
+* Adding anti-bot/DDoS protection
+* Moving towards a headless commerce architecture with a decoupled frontend
+
+## Contributing
+--------------
+
+We welcome contributions to the eCommerce project! To get involved, fork the repository and create a feature branch for your changes. Submit a pull request with a clear description of your improvements and ensure that all tests pass.
+
+## License
+---------
+
+eCommerce is licensed under the MIT License. See the [LICENSE file](LICENSE) for details.
 
 ### Recent Updates
 ------------------
@@ -107,19 +111,3 @@ eCommerce is a web application designed to provide a standard online shopping ex
 * 2026-08-20: Verified build stability and passing GitHub Actions pipelines
 * 2026-08-12: Pruned unused branches to prevent merge conflicts
 * 2026-08-07: Isolated checkout branch anomaly (PR #42); optimization and bug fixes ongoing
-
-## Contributing
---------------
-
-Contributions are welcome! Fork the repository and create a feature branch for your changes. Submit a pull request with a clear description of your improvements. Ensure all tests pass before submitting.
-
-```bash
-git checkout -b feature/AmazingFeature
-git commit -m 'Add some AmazingFeature'
-git push origin feature/AmazingFeature
-```
-
-## License
----------
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
