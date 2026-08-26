@@ -11,7 +11,7 @@ A full-stack e-commerce application that combines a lightweight HTML5 frontend w
 ## Overview
 -----------
 
-eCommerce is a web application designed to provide a standard online shopping experience. With features like secure authentication, product cataloging, and cart management, the platform offers an extensible foundation for building a storefront.
+Our e-commerce platform offers a standard online shopping experience with features like secure authentication, product cataloging, and cart management.
 
 ## Key Features
 -------------
@@ -19,28 +19,28 @@ eCommerce is a web application designed to provide a standard online shopping ex
 ### Secure Authentication
 ------------------
 
-* JWT-based user login and registration for a secure user experience
+- User login and registration using JSON Web Tokens (JWT) for a secure user experience.
 
 ### Product Catalog
 -----------------
 
-* RESTful API endpoints for product management and filtering
-* Support for product variants and SKUs
+- RESTful API endpoints for product management and filtering
+- Support for product variants and Stock-Keeping Units (SKUs)
 
 ### Responsive UI
 ----------------
 
-* HTML5 layouts that adapt to mobile and desktop screens for a seamless user experience
+- HTML5 layouts that adapt to mobile and desktop screens for a seamless user experience
 
 ### Cart Management
 -----------------
 
-* Session-based shopping cart persistence for a smooth shopping experience
+- Session-based shopping cart persistence for a smooth shopping experience
 
 ### Transaction History
 -------------------
 
-* Database-backed order logging and user purchase history for efficient transaction tracking
+- Database-backed order logging and user purchase history for efficient transaction tracking
 
 ## Getting Started
 -----------------
@@ -48,14 +48,15 @@ eCommerce is a web application designed to provide a standard online shopping ex
 ### Prerequisites
 ----------------
 
-* Java JDK 17 or later
-* Maven
-* PostgreSQL
-* A modern web browser
+- Java JDK 17 or later
+- Maven
+- PostgreSQL
+- A modern web browser
 
-To set up the application, follow these steps:
+### Setup Steps
+-------------
 
-1. **Clone the repository**: Download the latest version of the eCommerce repository to your local machine.
+1. **Clone the repository**: Download the latest version of the eCommerce repository to your local machine and navigate into it.
    ```bash
    git clone https://github.com/shubhyagami/eCommerce.git
    cd eCommerce
@@ -82,17 +83,17 @@ To set up the application, follow these steps:
 
 5. **Launch the Frontend**: Open the primary `index.html` file directly in your browser, or serve the directory using a local static server such as Live Server.
 
-## Roadmap
-----------
+## Upcoming Developments
+------------------------
 
-Our upcoming development priorities include:
+Our next development priorities include:
 
-* Fixing checkout exception handling (PR #42)
-* Optimizing SKU indexing algorithms
-* Integrating a multi-provider payment gateway
-* Implementing an auto-scaling Redis cache layer
-* Adding anti-bot/DDoS protection
-* Moving towards a headless commerce architecture with a decoupled frontend
+- Fixing checkout exception handling (PR #42)
+- Optimizing SKU indexing algorithms
+- Integrating a multi-provider payment gateway
+- Implementing an auto-scaling Redis cache layer
+- Adding anti-bot/DDoS protection
+- Moving towards a headless commerce architecture with a decoupled frontend
 
 ## Contributing
 --------------
