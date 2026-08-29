@@ -8,13 +8,13 @@ An e‑commerce platform built with a lightweight HTML5 frontend, a robust Java 
 [![Stars](https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social)](https://github.com/shubhyagami/eCommerce)
 
 ## Overview
-A full‑stack online store that provides secure authentication, product cataloging, cart management, and transaction history, delivering a responsive shopping experience across devices.
+A full‑stack online store that offers secure authentication, product cataloging, cart management, and transaction history, delivering a responsive shopping experience across devices.
 
 ## Key Features
-- **Secure Authentication** – JWT‑based login and registration for a safe user experience.  
+- **Secure Authentication** – JWT‑based login and registration to protect user accounts.  
 - **Product Catalog** – RESTful API endpoints for managing and filtering products, including variants and SKUs.  
 - **Responsive UI** – HTML5 layouts that adapt to mobile and desktop screens.  
-- **Cart Management** – Session‑based shopping cart persistence for seamless checkout flow.  
+- **Cart Management** – Session‑based shopping cart persistence for a seamless checkout flow.  
 - **Transaction History** – Persistent order logging and purchase history for each user.
 
 ## Getting Started
@@ -52,13 +52,13 @@ A full‑stack online store that provides secure authentication, product catalog
 
 5. **Start the frontend** – open `index.html` directly in a browser or serve the folder with a static server such as Live Server.
 
-## Upcoming Developments
-- Improve checkout exception handling (PR #42)  
-- Optimize SKU indexing algorithms  
-- Integrate a multi‑provider payment gateway  
-- Add an auto‑scaling Redis cache layer  
-- Implement anti‑bot/DDoS protection  
-- Transition toward a headless commerce architecture with a decoupled frontend
+## Upcoming Work
+- Enhance checkout exception handling (see PR #42).  
+- Optimize SKU indexing algorithms.  
+- Integrate a multi‑provider payment gateway.  
+- Add an auto‑scaling Redis cache layer.  
+- Implement anti‑bot/DDoS protection.  
+- Transition toward a headless commerce architecture with a decoupled frontend.
 
 ## Contributing
 Contributions are welcome! Fork the repository, create a feature branch, and submit a pull request with a clear description of your changes. Ensure all tests pass before merging.
@@ -67,7 +67,7 @@ Contributions are welcome! Fork the repository, create a feature branch, and sub
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Recent Updates
-- 2026‑08‑21: Refined README structure for better readability  
-- 2026‑08‑20: Verified build stability and passing GitHub Actions pipelines  
-- 2026‑08‑12: Pruned unused branches to prevent merge conflicts  
-- 2026‑08‑07: Isolated checkout branch anomaly (PR #42); optimization and bug fixes ongoing
+- 2026‑08‑21: Refined README structure for better readability.  
+- 2026‑08‑20: Verified build stability and passing GitHub Actions pipelines.  
+- 2026‑08‑12: Pruned unused branches to prevent merge conflicts.  
+- 2026‑08‑07: Isolated checkout branch anomaly (PR #42); optimization and bug fixes ongoing.
