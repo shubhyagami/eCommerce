@@ -1,6 +1,6 @@
 # eCommerce
 
-A lightweight, full‑stack e‑commerce solution that combines an HTML5 front‑end, a Java Spring Boot back‑end, and a scalable PostgreSQL database. It offers secure authentication, product cataloging, cart management, and detailed order history, all designed to work smoothly on both mobile and desktop devices.
+A lightweight, full‑stack e‑commerce solution that combines an HTML5 front‑end with a Java Spring Boot back‑end and a scalable PostgreSQL database. It provides secure authentication, product cataloging, cart management, and detailed order history, delivering a smooth experience on both mobile and desktop devices.
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build)](https://github.com/shubhyagami/eCommerce/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/shubhyagami/eCommerce/blob/main/LICENSE)
@@ -8,14 +8,14 @@ A lightweight, full‑stack e‑commerce solution that combines an HTML5 front�
 [![Stars](https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social)](https://github.com/shubhyagami/eCommerce)
 
 ## Overview
-A responsive online store built with Spring Boot that provides JWT‑based authentication, a RESTful product catalog, session‑based cart handling, and persistent transaction records. The project emphasizes clean code, modular design, and easy extensibility.
+A responsive online store built with Spring Boot that offers JWT‑based authentication, a RESTful product catalog, session‑aware cart handling, and persistent transaction records. The project emphasizes clean code, modular design, and easy extensibility, making it suitable for both learning and production use.
 
 ## Key Features
-- **Secure Authentication** – JWT‑based login and registration with password hashing.
-- **Product Catalog** – RESTful endpoints for listing, filtering, and managing products, variants, and SKUs.
-- **Responsive UI** – HTML5 templates that adapt gracefully to different screen sizes.
-- **Cart Management** – Session‑aware cart that persists items across user interactions.
-- **Transaction History** – Detailed order logs and purchase history for each user.
+- **Secure Authentication** – JWT‑based login and registration with hashed passwords.  
+- **Product Catalog** – RESTful endpoints for listing, filtering, and managing products, variants, and SKUs.  
+- **Responsive UI** – HTML5 templates that adapt gracefully to different screen sizes.  
+- **Cart Management** – Session‑aware cart that persists items across user interactions.  
+- **Transaction History** – Detailed order logs and purchase history for each user.  
 
 ## Getting Started
 
@@ -26,7 +26,6 @@ A responsive online store built with Spring Boot that provides JWT‑based authe
 - A modern web browser (or a static server such as Live Server for the front‑end)
 
 ### Setup
-
 1. **Clone the repository**
    ```bash
    git clone https://github.com/shubhyagami/eCommerce.git
@@ -57,21 +56,21 @@ A responsive online store built with Spring Boot that provides JWT‑based authe
 
 ### Development Tips
 - Run unit and integration tests with `mvn test` to ensure stability before committing changes.  
-- Use the provided GitHub Actions workflow for continuous integration.  
-- Keep feature branches short and focused; squash merge when ready to integrate.
+- The CI workflow on GitHub Actions validates builds and test results on every push.  
+- Keep feature branches short and focused; squash‑merge when ready to integrate.  
 
 ## Contributing
-Contributions are welcome! Fork the repository, create a feature branch for your work, and submit a pull request with a clear description of your changes. Ensure all tests pass and that the code follows the existing style conventions.
+Contributions are welcome! Fork the repository, create a feature branch for your work, and submit a pull request with a clear description of your changes. Ensure all tests pass and follow the existing code style.
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Recent Changes
 - **2026‑08‑21**: Refined README structure for improved readability.  
-- **2026‑08‑20**: Verified build stability and confirmed all GitHub Actions pipelines pass.  
-- **2026‑08‑12**: Removed obsolete branches to prevent merge conflicts.  
-- **2026‑08‑07**: Addressed checkout branch anomaly (PR #42); implemented optimizations and bug fixes.  
+- **2026‑08‑20**: Verified build stability; all GitHub Actions pipelines pass.  
+- **2026‑08‑12**: Removed stale branches to prevent merge conflicts.  
+- **2026‑08‑07**: Fixed checkout‑branch anomaly (PR #42) and applied related optimizations and bug fixes.  
 
 ---  
 
-*This README has been updated to reflect current project status and to provide clearer guidance for contributors and users.*
+This README has been updated to reflect the current project status and to provide clearer guidance for contributors and users.
