@@ -1,24 +1,24 @@
 # eCommerce
 
-A lightweight, full‑stack e‑commerce solution built with **Java 17 Spring Boot** on the back‑end, plain HTML5/CSS on the front‑end, and a scalable PostgreSQL database. It provides secure JWT‑based authentication, a RESTful product catalog, session‑aware cart handling, and persistent order history—all served through a responsive UI that works on mobile and desktop.
+A lightweight, full‑stack e‑commerce solution built with **Java 17 Spring Boot**, plain HTML5/CSS, and PostgreSQL. It offers JWT‑based authentication, a RESTful product catalog, session‑aware carts, and persistent order history—all served through a responsive UI that works on mobile and desktop.
 
 ---
 
-![Build Status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build)  
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)  
-![Open Issues](https://img.shields.io/github/issues/shubhyagami/eCommerce)  
+![Build Status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)
+![Open Issues](https://img.shields.io/github/issues/shubhyagami/eCommerce?color=important&style=flat-square)
 ![Stars](https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social)
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Getting Started](#getting-started)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-  - [Clone the repository](#clone-the-repository)
+  - [Clone the repo](#clone-the-repo)
   - [Set up PostgreSQL](#set-up-postgresql)
   - [Configure the back‑end](#configure-the-back-end)
   - [Build the project](#build-the-project)
@@ -35,24 +35,25 @@ A lightweight, full‑stack e‑commerce solution built with **Java 17 Spring 
 
 ## Getting Started
 
-```sh
+```bash
 git clone https://github.com/shubhyagami/eCommerce.git
 cd eCommerce
 ```
 
-Set up PostgreSQL, create a database user, configure `application.properties`, build the project, run the Spring Boot jar, and open the static front‑end. Detailed steps follow below.
+1. Install PostgreSQL (≥ 13) and create a database user.  
+2. Edit `src/main/resources/application.properties` with your connection details and JWT secret.  
+3. Build and run the application.  
+4. Open the static front‑end in a browser.
 
 ---
 
 ## Features
 
-| Feature | Description |
-|---------|-------------|
-| **JWT Authentication** | Secure login/registration with hashed passwords. |
-| **RESTful Product Catalog** | CRUD operations for products, variants, and SKUs. |
-| **Responsive UI** | Plain HTML5/CSS that adapts to all screen sizes. |
-| **Session‑aware Cart** | Cart contents persist across page loads and tabs. |
-| **Order History** | Detailed transaction logs per user. |
+- **JWT Authentication** – secure login/registration with hashed passwords.  
+- **RESTful Product Catalog** – CRUD for products, variants, and SKUs.  
+- **Responsive UI** – plain HTML/CSS that adapts to all screen sizes.  
+- **Session‑aware Cart** – cart contents persist across page loads and tabs.  
+- **Order History** – detailed transaction logs per user.  
 
 ---
 
@@ -60,41 +61,41 @@ Set up PostgreSQL, create a database user, configure `application.properties`, b
 
 | Layer | Technology |
 |-------|------------|
-| Back‑end | Java 17, Spring Boot, Spring Data JPA, Spring Security, JWT |
-| Front‑end | Plain HTML5, CSS |
-| Database | PostgreSQL |
-| Build | Maven |
-| CI | GitHub Actions |
+| **Back‑end** | Java 17, Spring Boot, Spring Data JPA, Spring Security, JWT |
+| **Front‑end** | Plain HTML5, CSS |
+| **Database** | PostgreSQL |
+| **Build** | Maven |
+| **CI** | GitHub Actions |
 
 ---
 
 ## Prerequisites
 
-- Java 17 or newer
+- Java 17 (JDK or JRE)
 - Maven 3.9+
-- PostgreSQL 13+ (or any modern PostgreSQL version)
+- PostgreSQL 13+ (or newer)
 - Git
-- A modern web browser (Chrome/Firefox/Edge)
+- Web browser (Chrome/Firefox/Edge)
 
 ---
 
 ## Installation
 
-### Clone the repository
+### Clone the repo
 
-```sh
+```bash
 git clone https://github.com/shubhyagami/eCommerce.git
 cd eCommerce
 ```
 
 ### Set up PostgreSQL
 
-```sh
-# Create a database user and database
+```bash
+# Create a user and database
 sudo -u postgres createuser -P your_user
 sudo -u postgres createdb -O your_user your_database
 
-# Import the schema
+# Load schema
 psql -U your_user -d your_database -f src/main/resources/schema.sql
 ```
 
@@ -112,57 +113,61 @@ spring.datasource.password=your_password
 app.jwt.secret=YOUR_SECURE_JWT_SECRET
 ```
 
+> **Tip:** Keep the JWT secret out of source control—use an environment variable or a secrets manager in production.
+
 ### Build the project
 
-```sh
+```bash
 mvn clean package
 ```
 
+The jar will be located at `target/ecommerce-0.1.0.jar`.
+
 ### Run the back‑end
 
-```sh
+```bash
 java -jar target/ecommerce-0.1.0.jar
 ```
 
-The API is now available at `http://localhost:8080`.
+The API server starts on `http://localhost:8080`.
 
 ### Serve the front‑end
 
-The front‑end is pure static HTML. Open `frontend/index.html` directly in a browser, or serve it with a static server:
+The front‑end is a static site. Open `frontend/index.html` directly in a browser, or serve it with a simple HTTP server:
 
-```sh
-# Example with Python
+```bash
+# Example with Python 3
 python -m http.server 8000
 ```
 
-The front‑end automatically talks to the back‑end on `localhost:8080`.
+The front‑end will communicate with the API at `localhost:8080`.
 
 ---
 
 ## Running the Application
 
-Once the back‑end is running, open the front‑end URL in a browser. Register, log in, browse products, add items to the cart, and place orders. All data persists in PostgreSQL.
+After the back‑end is running, open `http://localhost:8000` (or the URL of your static server). Register a new user, log in, browse products, add items to the cart, and place orders. All data is persisted in PostgreSQL.
 
 ---
 
 ## Testing
 
-Run unit and integration tests with:
+Run the full test suite with:
 
-```sh
+```bash
 mvn test
 ```
 
-The GitHub Actions workflow automatically runs these tests on every push.
+The CI workflow automatically executes these tests on every push.
 
 ---
 
 ## Development Guidelines
 
-- Keep feature branches short and focused.
-- Squash commits before creating a pull request.
-- Run `mvn spotless:apply` to enforce code style.
-- Refresh the database schema (`src/main/resources/schema.sql`) before major changes.
+- Keep feature branches focused and short.  
+- Squash commits before opening a pull request.  
+- Run `mvn spotless:apply` to format code.  
+- Refresh `src/main/resources/schema.sql` when schema changes are made.
 
 ---
 
@@ -171,16 +176,16 @@ The GitHub Actions workflow automatically runs these tests on every push.
 1. Fork the repository.  
 2. Create a feature branch (`git checkout -b feature/awesome-feature`).  
 3. Commit your changes (`git commit -m "Add awesome feature"`).  
-4. Push (`git push origin feature/awesome-feature`).  
+4. Push the branch (`git push origin feature/awesome-feature`).  
 5. Open a pull request with a concise description and any relevant test results.
 
-All contributions are welcome. Please run the tests locally and ensure the CI passes.
+All contributions are welcome. Please run tests locally and ensure CI passes.
 
 ---
 
 ## License
 
-Distributed under the MIT License. See the `LICENSE` file for details.
+This project is licensed under the MIT License – see the [`LICENSE`](LICENSE) file for details.
 
 ---
 
@@ -192,5 +197,3 @@ Distributed under the MIT License. See the `LICENSE` file for details.
 | 2026‑08‑21 | Refined README for readability. |
 | 2026‑08‑20 | Verified CI pipeline stability. |
 | 2026‑08‑07 | Fixed checkout‑branch bug (PR #42). |
-
----
