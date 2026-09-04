@@ -1,15 +1,15 @@
 # eCommerce
 
-A lightweight full‑stack e‑commerce prototype built with **Java 17 Spring Boot**, vanilla HTML/CSS, and PostgreSQL. It provides JWT‑based authentication, a RESTful product catalog, a session‑aware cart, and persistent order history. The static front‑end is responsive and works on mobile and desktop.
+A lightweight full‑stack e‑commerce prototype built with **Java 17 Spring Boot**, vanilla HTML/CSS, and PostgreSQL. It offers JWT‑based authentication, a RESTful product catalog, a session‑aware cart, and a persistent order history. The static front‑end is responsive and works on mobile and desktop.
 
-![Build status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)
-![License](https://img.shields.io/github/license/shubhyagami/eCommerce?style=flat-square)
-![Open issues](https://img.shields.io/github/issues/shubhyagami/eCommerce?style=flat-square)
+![Build status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)  
+![License](https://img.shields.io/github/license/shubhyagami/eCommerce?style=flat-square)  
+![Open issues](https://img.shields.io/github/issues/shubhyagami/eCommerce?style=flat-square)  
 ![Stargazers](https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social)
 
 ---
 
-## Getting started
+## Quick start
 
 ```bash
 # 1️⃣ Clone the repo
@@ -25,18 +25,17 @@ psql -U your_user -d your_database -f src/main/resources/schema.sql
 
 # 4️⃣ Configure the application
 cp src/main/resources/application.properties.example src/main/resources/application.properties
-# Edit the file with your DB credentials and a secret JWT key
+# Edit the file with your DB credentials and a JWT secret
 
 # 5️⃣ Build and run
 mvn clean package
 java -jar target/ecommerce-0.1.0.jar
 ```
 
-Open a browser at `http://localhost:8000` (or your static‑site server) and register a new user to explore the app.
+Open `http://localhost:8000` (or serve `frontend/index.html` with any static server) and register a new user to explore the app.
 
-> **Tips**  
-> • Keep the JWT secret out of version control; use an environment variable in production.  
-> • The API defaults to `http://localhost:8080`.
+> **Tip**  
+> Keep the JWT secret out of version control; in production use an environment variable.
 
 ---
 
@@ -52,13 +51,13 @@ Open a browser at `http://localhost:8000` (or your static‑site server) and reg
 
 ## Tech stack
 
-| Layer | Technology |
-|-------|------------|
-| Backend | Java 17, Spring Boot, Spring Data JPA, Spring Security, JWT |
-| Frontend | Plain HTML5 & CSS |
-| Database | PostgreSQL |
-| Build | Maven |
-| CI | GitHub Actions |
+| Layer      | Technology |
+|------------|-------------|
+| Backend    | Java 17, Spring Boot, Spring Data JPA, Spring Security, JWT |
+| Frontend   | Plain HTML5 & CSS |
+| Database   | PostgreSQL |
+| Build      | Maven |
+| CI         | GitHub Actions |
 
 ---
 
@@ -72,19 +71,9 @@ Open a browser at `http://localhost:8000` (or your static‑site server) and reg
 
 ---
 
-## Installation
+## Configuration
 
-### Database
-
-```bash
-sudo -u postgres createuser -P your_user
-sudo -u postgres createdb -O your_user your_database
-psql -U your_user -d your_database -f src/main/resources/schema.sql
-```
-
-### Configuration
-
-Create `src/main/resources/application.properties` from the example and set the required values:
+Create `src/main/resources/application.properties` from the example:
 
 ```properties
 # PostgreSQL
@@ -96,54 +85,55 @@ spring.datasource.password=your_password
 app.jwt.secret=YOUR_SECURE_JWT_SECRET
 ```
 
+> **Security note** – Never commit the JWT secret. Use an environment variable or a secrets manager in production.
+
 ---
 
-### Build
+## Running the app
 
 ```bash
+# Build
 mvn clean package
-```
 
-The executable jar is placed at `target/ecommerce-0.1.0.jar`.
-
-### Run
-
-```bash
+# Run
 java -jar target/ecommerce-0.1.0.jar
 ```
 
-The API listens on `http://localhost:8080`.
+The API will be available at `http://localhost:8080`.
 
 ---
 
-## Running the front‑end
+## Serving the front‑end
 
-The front‑end is a static site. Open `frontend/index.html` directly or serve it with a simple HTTP server.
+The front‑end is a static site.
 
 ```bash
-# Python 3 example
+# Example with Python 3
 python -m http.server 8000
 ```
 
-The static site can be accessed at `http://localhost:8000` and will communicate with the API at `http://localhost:8080`.
+Navigate to `http://localhost:8000`.  
+The UI will automatically contact the API at `http://localhost:8080`.
 
 ---
 
 ## Testing
 
+Run the test suite locally:
+
 ```bash
 mvn test
 ```
 
-All unit and integration tests run here; the GitHub Actions workflow runs them on every push.
+All unit and integration tests are executed by the GitHub Actions workflow on every push.
 
 ---
 
 ## Development guidelines
 
-- Work in short, focused feature branches.  
+- Branches should be short and focused (e.g. `feature/add-coupon-system`).  
 - Squash commits before submitting a pull request.  
-- Run `mvn spotless:apply` to enforce consistent code formatting.  
+- Lint and format with `mvn spotless:apply`.  
 - Keep `schema.sql` in sync with JPA entity changes.
 
 ---
@@ -156,7 +146,7 @@ All unit and integration tests run here; the GitHub Actions workflow runs them o
 4. Push the branch: `git push origin feature/awesome-feature`.  
 5. Open a pull request with a concise description.
 
-All contributions are welcome. Please run tests locally and ensure CI passes before submitting a PR.
+Please run tests locally and ensure CI passes before submitting a PR.
 
 ---
 
