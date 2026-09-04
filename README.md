@@ -1,6 +1,6 @@
 # eCommerce
 
-A lightweight, full‑stack e‑commerce solution built with **Java 17 Spring Boot**, plain HTML5/CSS, and PostgreSQL. It offers JWT‑based authentication, a RESTful product catalog, session‑aware carts, and persistent order history—all served through a responsive UI that works on mobile and desktop.
+A lightweight full‑stack e‑commerce prototype built with **Java 17 Spring Boot**, vanilla HTML/CSS, and PostgreSQL. It provides JWT‑based authentication, a RESTful product catalog, a session‑aware cart, and persistent order history. The static front‑end is responsive and works on mobile and desktop.
 
 ![Build status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)
 ![License](https://img.shields.io/github/license/shubhyagami/eCommerce?style=flat-square)
@@ -9,56 +9,44 @@ A lightweight, full‑stack e‑commerce solution built with **Java 17 Spring 
 
 ---
 
-## Quick start
+## Getting started
 
 ```bash
+# 1️⃣ Clone the repo
 git clone https://github.com/shubhyagami/eCommerce.git
 cd eCommerce
 
-# Create the database
+# 2️⃣ Create a PostgreSQL user & database
 sudo -u postgres createuser -P your_user
 sudo -u postgres createdb -O your_user your_database
+
+# 3️⃣ Load the initial schema
 psql -U your_user -d your_database -f src/main/resources/schema.sql
 
-# Configure application
+# 4️⃣ Configure the application
 cp src/main/resources/application.properties.example src/main/resources/application.properties
-# edit the new file with your DB credentials and JWT secret
+# Edit the file with your DB credentials and a secret JWT key
 
-# Build and run
+# 5️⃣ Build and run
 mvn clean package
 java -jar target/ecommerce-0.1.0.jar
 ```
 
-Open your web browser at `http://localhost:8000` (or the URL of the static server you choose) and register a new user to try the application.
+Open a browser at `http://localhost:8000` (or your static‑site server) and register a new user to explore the app.
 
----
-
-## Table of contents
-
-- [Features](#features)
-- [Tech stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-  - [Database setup](#database-setup)
-  - [Configuration](#configuration)
-  - [Building](#building)
-  - [Running](#running)
-- [Running the front‑end](#running-the-front-end)
-- [Testing](#testing)
-- [Development guidelines](#development-guidelines)
-- [Contributing](#contributing)
-- [License](#license)
-- [Changelog](#changelog)
+> **Tips**  
+> • Keep the JWT secret out of version control; use an environment variable in production.  
+> • The API defaults to `http://localhost:8080`.
 
 ---
 
 ## Features
 
-- **JWT authentication** – secure login/registration with hashed passwords
-- **RESTful product catalog** – CRUD for products, variants and SKUs
-- **Session‑aware cart** – cart contents persist across page loads and tabs
-- **Order history** – detailed transaction logs per user
-- **Responsive UI** – plain HTML/CSS that adapts to all screen sizes
+- **JWT authentication** – secure login/registration with hashed passwords.  
+- **RESTful product catalog** – CRUD for products, variants, and SKUs.  
+- **Session‑aware cart** – cart data persists across page loads and browser tabs.  
+- **Order history** – detailed, per‑user transaction records.  
+- **Responsive UI** – plain HTML/CSS that adapts to all screen sizes.
 
 ---
 
@@ -66,8 +54,8 @@ Open your web browser at `http://localhost:8000` (or the URL of the static serve
 
 | Layer | Technology |
 |-------|------------|
-| Back‑end | Java 17, Spring Boot, Spring Data JPA, Spring Security, JWT |
-| Front‑end | Plain HTML5, CSS |
+| Backend | Java 17, Spring Boot, Spring Data JPA, Spring Security, JWT |
+| Frontend | Plain HTML5 & CSS |
 | Database | PostgreSQL |
 | Build | Maven |
 | CI | GitHub Actions |
@@ -76,36 +64,27 @@ Open your web browser at `http://localhost:8000` (or the URL of the static serve
 
 ## Prerequisites
 
-- Java 17 (JDK or JRE)
-- Maven 3.9+
-- PostgreSQL 13+
-- Git
+- Java 17 (JDK or JRE)  
+- Maven 3.9+  
+- PostgreSQL 13+  
+- Git  
 - A modern web browser (Chrome, Firefox, Edge)
 
 ---
 
 ## Installation
 
-### Database setup
+### Database
 
 ```bash
-# Create a PostgreSQL user and database
 sudo -u postgres createuser -P your_user
 sudo -u postgres createdb -O your_user your_database
-
-# Load initial schema
 psql -U your_user -d your_database -f src/main/resources/schema.sql
 ```
 
 ### Configuration
 
-Rename the sample properties file and use your own credentials:
-
-```bash
-cp src/main/resources/application.properties.example src/main/resources/application.properties
-```
-
-Edit the new file:
+Create `src/main/resources/application.properties` from the example and set the required values:
 
 ```properties
 # PostgreSQL
@@ -117,67 +96,65 @@ spring.datasource.password=your_password
 app.jwt.secret=YOUR_SECURE_JWT_SECRET
 ```
 
-> **Security tip:** Keep the JWT secret out of source control. In production use an environment variable or a secrets manager.
+---
 
-### Building
+### Build
 
 ```bash
 mvn clean package
 ```
 
-The jar is written to `target/ecommerce-0.1.0.jar`.
+The executable jar is placed at `target/ecommerce-0.1.0.jar`.
 
-### Running
+### Run
 
 ```bash
 java -jar target/ecommerce-0.1.0.jar
 ```
 
-The API server listens on `http://localhost:8080`.
+The API listens on `http://localhost:8080`.
 
 ---
 
 ## Running the front‑end
 
-The front‑end is a static site. You can open `frontend/index.html` directly in a browser, or serve it with a simple HTTP server:
+The front‑end is a static site. Open `frontend/index.html` directly or serve it with a simple HTTP server.
 
 ```bash
-# Example with Python 3
+# Python 3 example
 python -m http.server 8000
 ```
 
-The static site will communicate with the API at `http://localhost:8080`.
+The static site can be accessed at `http://localhost:8000` and will communicate with the API at `http://localhost:8080`.
 
 ---
 
 ## Testing
 
-Run the test suite:
-
 ```bash
 mvn test
 ```
 
-All CI jobs execute the same tests on every push.
+All unit and integration tests run here; the GitHub Actions workflow runs them on every push.
 
 ---
 
 ## Development guidelines
 
-- Work in short, focused feature branches
-- Squash commits before submitting a pull request
-- Use `mvn spotless:apply` for consistent formatting
-- Keep `schema.sql` in sync with the JPA entity changes
+- Work in short, focused feature branches.  
+- Squash commits before submitting a pull request.  
+- Run `mvn spotless:apply` to enforce consistent code formatting.  
+- Keep `schema.sql` in sync with JPA entity changes.
 
 ---
 
 ## Contributing
 
-1. Fork the repository  
-2. Create a feature branch (`git checkout -b feature/awesome-feature`)  
-3. Commit your changes (`git commit -m "Add awesome feature"`)  
-4. Push the branch (`git push origin feature/awesome-feature`)  
-5. Open a pull request and provide a concise description
+1. Fork the repository.  
+2. Create a feature branch: `git checkout -b feature/awesome-feature`.  
+3. Commit your changes.  
+4. Push the branch: `git push origin feature/awesome-feature`.  
+5. Open a pull request with a concise description.
 
 All contributions are welcome. Please run tests locally and ensure CI passes before submitting a PR.
 
@@ -193,7 +170,8 @@ This project is licensed under the MIT License – see the [LICENSE](LICENSE) fi
 
 | Date | Change |
 |------|--------|
-| 2026‑09‑01 | Updated README structure and added concise feature list |
-| 2026‑08‑21 | Refined README for readability |
-| 2026‑08‑20 | Verified CI pipeline stability |
-| 2026‑08‑07 | Fixed checkout‑branch bug (PR #42) |
+| 2026‑09‑01 | Re‑structured README, trimmed content, added concise feature list |
+| 2026‑08‑21 | Minor wording updates for clarity |
+| 2026‑08‑20 | Updated CI badge and fixed table formatting |
+
+---
