@@ -1,17 +1,18 @@
 # eCommerce
 
-A lightweight, full‑stack e‑commerce prototype built with **Java 17 + Spring Boot**.  
-The back‑end exposes a RESTful API for products and orders, and the front‑end is a plain HTML5/CSS static site that consumes that API.  
-Key technologies: JWT authentication, Spring Security, Spring Data JPA and PostgreSQL.
+A lightweight full‑stack e‑commerce prototype built with **Java 17 + Spring Boot**.  
+The back‑end exposes a REST API for products and orders, while the front‑end is a plain HTML5/CSS static site that consumes that API.  
+Key technologies: JWT authentication, Spring Security, Spring Data JPA, PostgreSQL.
 
 ![Build status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)  
+![Test status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=test&style=flat-square)  
 ![License](https://img.shields.io/github/license/shubhyagami/eCommerce?style=flat-square)  
 ![Open issues](https://img.shields.io/github/issues/shubhyagami/eCommerce?style=flat-square)  
 ![Stargazers](https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social)
 
 ---
 
-## Quick Start
+## Quick start
 
 ```bash
 git clone https://github.com/shubhyagami/eCommerce.git
@@ -31,14 +32,14 @@ sudo -u postgres createdb -O your_user your_database
 psql -U your_user -d your_database -f src/main/resources/schema.sql
 ```
 
-### 3. Configure the application
+### 3. Configure
 
 ```bash
 cp src/main/resources/application.properties.example src/main/resources/application.properties
-# Edit the file, setting your DB credentials and a JWT secret.
+# Edit the file: set DB credentials and a JWT secret.
 ```
 
-> **Security tip** – Never commit a hard‑coded JWT secret. In production set the `JWT_SECRET` environment variable or use a secrets manager.
+> **Security note** – Never commit a hard‑coded JWT secret. In production set the `JWT_SECRET` environment variable or use a secrets manager.
 
 ### 4. Build and run
 
@@ -47,11 +48,11 @@ mvn clean package
 java -jar target/ecommerce-0.1.0.jar
 ```
 
-Open <http://localhost:8080> to register a new user and start browsing the site.
+Open <http://localhost:8080> to register a new user and start browsing.
 
 ---
 
-## Core Features
+## Core features
 
 | Feature | Description |
 |---|---|
@@ -60,7 +61,7 @@ Open <http://localhost:8080> to register a new user and start browsing the site.
 | **Session‑aware Cart** | Persisted in the database, survives browser restarts |
 | **Order History** | Per‑user transactions, exportable to CSV or PDF |
 | **Static Front‑End** | Vanilla HTML5/CSS, responsive mobile‑first design |
-| **CI/CD** | GitHub Actions builds, unit and integration tests on every push |
+| **CI/CD** | GitHub Actions builds, unit & integration tests on every push |
 
 ---
 
@@ -88,28 +89,25 @@ spring.datasource.password=your_password
 app.jwt.secret=${JWT_SECRET}
 ```
 
+If you prefer environment variables, you can set them directly; the application will pick them up.
+
 ---
 
-## Running Locally
+## Running locally
 
 ```bash
 mvn clean package
 java -jar target/ecommerce-0.1.0.jar
 ```
 
-The REST API is available at <http://localhost:8080>.
-
----
-
-## Serving the Front‑End
-
-The UI is a static site. A quick way to serve it:
+The REST API is reachable at <http://localhost:8080>.  
+The static front‑end can be served with any HTTP server; for a quick test:
 
 ```bash
 python -m http.server 8000
 ```
 
-Open <http://localhost:8000> – it automatically points to the API at <http://localhost:8080>.
+and open <http://localhost:8000>.
 
 ---
 
@@ -123,13 +121,13 @@ All unit and integration tests run on every push via the GitHub Actions workflow
 
 ---
 
-## Development Guidelines
+## Development guidelines
 
-- Use short, descriptive feature branches (e.g., `feature/add-coupon-system`).
+- Keep feature branches short and descriptive (e.g. `feature/add-coupon-system`).
 - Squash commits before opening a PR.
 - Run `mvn spotless:apply` to format and lint the code.
-- Update `schema.sql` when JPA entity mappings change.
-- Verify all tests pass locally and CI is green before merging.
+- Update `schema.sql` whenever JPA entity mappings change.
+- Verify tests pass locally and CI passes before merging.
 
 ---
 
@@ -156,3 +154,5 @@ MIT – see the [LICENSE](LICENSE) file for details.
 | 2026‑09‑01 | Refactored README, streamlined sections |
 | 2026‑08‑21 | Minor wording tweaks |
 | 2026‑08‑20 | Updated CI badge, fixed table formatting |
+
+---
