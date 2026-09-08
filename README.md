@@ -1,23 +1,36 @@
 # eCommerce
 
-A lightweight full‑stack e‑commerce prototype built with **Java 17 + Spring Boot**.  
-The back‑end exposes a REST API for products and orders, while the front‑end is a plain HTML5/CSS static site that consumes that API.  
-Key technologies: JWT authentication, Spring Security, Spring Data JPA, PostgreSQL.
+A minimal full‑stack e‑commerce prototype built with **Java 17 + Spring Boot 3**.  
+The back‑end offers a REST API for products, categories, variants and orders; the front‑end is a vanilla HTML5/CSS page that consumes that API.  
+It showcases JWT authentication, role‑based access control, Spring Security, Spring Data JPA and PostgreSQL.
 
 ![Build status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)  
 ![Test status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=test&style=flat-square)  
+![Coverage](https://img.shields.io/codecov/c/github/shubhyagami/eCommerce?style=flat-square)  
 ![License](https://img.shields.io/github/license/shubhyagami/eCommerce?style=flat-square)  
-![Open issues](https://img.shields.io/github/issues/shubhyagami/eCommerce?style=flat-square)  
-![Stargazers](https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social)
+![Issues](https://img.shields.io/github/issues/shubhyagami/eCommerce?style=flat-square)  
+![Stars](https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social)
 
 ---
 
-## Quick start
+## Getting started
+
+These steps will get the application running locally.
 
 ```bash
 git clone https://github.com/shubhyagami/eCommerce.git
 cd eCommerce
 ```
+
+### Prerequisites
+
+- Java 17 (JDK or JRE)
+- Maven 3.9+
+- PostgreSQL 13+
+- Git
+- (Optional) Docker
+
+> **Tip** – The project ships with a `docker-compose.yml`. If you prefer Docker, simply run `docker compose up -d` to spin up the API and a PostgreSQL instance.
 
 ### 1. Create a PostgreSQL database
 
@@ -25,6 +38,8 @@ cd eCommerce
 sudo -u postgres createuser -P your_user
 sudo -u postgres createdb -O your_user your_database
 ```
+
+> Or set the `POSTGRES_*` environment variables in the Docker compose file.
 
 ### 2. Load the schema
 
@@ -36,48 +51,9 @@ psql -U your_user -d your_database -f src/main/resources/schema.sql
 
 ```bash
 cp src/main/resources/application.properties.example src/main/resources/application.properties
-# Edit the file: set DB credentials and a JWT secret.
 ```
 
-> **Security note** – Never commit a hard‑coded JWT secret. In production set the `JWT_SECRET` environment variable or use a secrets manager.
-
-### 4. Build and run
-
-```bash
-mvn clean package
-java -jar target/ecommerce-0.1.0.jar
-```
-
-Open <http://localhost:8080> to register a new user and start browsing.
-
----
-
-## Core features
-
-| Feature | Description |
-|---|---|
-| **JWT Authentication** | Secure login, role‑based access control, salted password hashing |
-| **Product API** | CRUD endpoints for categories, products, variants, and SKUs |
-| **Session‑aware Cart** | Persisted in the database, survives browser restarts |
-| **Order History** | Per‑user transactions, exportable to CSV or PDF |
-| **Static Front‑End** | Vanilla HTML5/CSS, responsive mobile‑first design |
-| **CI/CD** | GitHub Actions builds, unit & integration tests on every push |
-
----
-
-## Prerequisites
-
-- Java 17 (JDK or JRE)
-- Maven 3.9+
-- PostgreSQL 13+
-- Git
-- Modern web browser (Chrome, Firefox, Edge)
-
----
-
-## Configuration
-
-Create `src/main/resources/application.properties` from the example and fill in your details:
+Edit the file and set the database credentials and a JWT secret.
 
 ```properties
 # PostgreSQL
@@ -89,45 +65,54 @@ spring.datasource.password=your_password
 app.jwt.secret=${JWT_SECRET}
 ```
 
-If you prefer environment variables, you can set them directly; the application will pick them up.
+> **Security note** – Never commit a hard‑coded JWT secret. In production set the `JWT_SECRET` environment variable or use a secrets manager.
 
----
-
-## Running locally
+### 4. Build and run
 
 ```bash
 mvn clean package
 java -jar target/ecommerce-0.1.0.jar
 ```
 
-The REST API is reachable at <http://localhost:8080>.  
-The static front‑end can be served with any HTTP server; for a quick test:
+The API is now reachable at <http://localhost:8080>.  
+Open the static front‑end with any HTTP server, e.g.:
 
 ```bash
 python -m http.server 8000
 ```
 
-and open <http://localhost:8000>.
+and visit <http://localhost:8000>.
 
 ---
 
-## Testing
+## Features
+
+- **JWT authentication** – secure login, salted password hashing, role‑based access control  
+- **Product API** – CRUD for categories, products, variants and SKUs  
+- **Session‑aware cart** – persisted in the database and survives browser restarts  
+- **Order history** – per‑user transactions, exportable to CSV or PDF  
+- **Static front‑end** – responsive, mobile‑first design with plain HTML5/CSS  
+- **CI/CD** – GitHub Actions build, unit and integration tests on every push  
+
+---
+
+## Running tests
 
 ```bash
 mvn test
 ```
 
-All unit and integration tests run on every push via the GitHub Actions workflow.
+All unit and integration tests run automatically via GitHub Actions.
 
 ---
 
 ## Development guidelines
 
-- Keep feature branches short and descriptive (e.g. `feature/add-coupon-system`).
-- Squash commits before opening a PR.
-- Run `mvn spotless:apply` to format and lint the code.
-- Update `schema.sql` whenever JPA entity mappings change.
-- Verify tests pass locally and CI passes before merging.
+- Use descriptive feature‑branch names (e.g. `feature/add-coupon-system`).  
+- Keep branches short and squash commits before opening a PR.  
+- Run `mvn spotless:apply` to format and lint the code.  
+- Update `src/main/resources/schema.sql` whenever JPA entity mappings change.  
+- Verify all tests pass locally; the CI should be green before merging.
 
 ---
 
@@ -137,7 +122,7 @@ All unit and integration tests run on every push via the GitHub Actions workflow
 2. Create an isolated feature branch: `git checkout -b feature/awesome`.  
 3. Commit your changes and push.  
 4. Open a pull request with a concise description.  
-5. Make sure all tests pass locally and CI is green.
+5. Ensure all tests pass locally and CI is green.
 
 ---
 
@@ -150,7 +135,7 @@ MIT – see the [LICENSE](LICENSE) file for details.
 ## Changelog
 
 | Date | Change |
-|---|---|
+|------|--------|
 | 2026‑09‑01 | Refactored README, streamlined sections |
 | 2026‑08‑21 | Minor wording tweaks |
 | 2026‑08‑20 | Updated CI badge, fixed table formatting |
