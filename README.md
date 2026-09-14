@@ -1,16 +1,36 @@
 # eCommerce
 
-A lightweight, full‑stack e‑commerce prototype built with **Java 17 + Spring Boot 3**.  
-The back‑end exposes a REST API for products, categories, variants and orders.  
-A vanilla HTML/CSS front‑end consumes that API.  
+A lightweight, full‑stack e‑commerce prototype built with **Java 17 + Spring Boot 3**.  
+The back‑end exposes a REST API for products, categories, variants, and orders, while a vanilla HTML/CSS front‑end consumes that API.  
 The stack demonstrates JWT authentication, role‑based access, Spring Security, Spring Data JPA, and PostgreSQL.
 
 ![Build status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)  
 ![Test status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=test&style=flat-square)  
-![Code coverage](https://img.shields.io/codecov/c/github/shubhyagami/eCommerce?style=flat-square)  
+![Coverage](https://img.shields.io/codecov/c/github/shubhyagami/eCommerce?style=flat-square)  
 ![License](https://img.shields.io/github/license/shubhyagami/eCommerce?style=flat-square)  
 ![Issues](https://img.shields.io/github/issues/shubhyagami/eCommerce?style=flat-square)  
 ![Stars](https://img.shields.io/github/stars/shubhyagami/eCommerce?style=social)
+
+---
+
+## Quick start
+
+```
+$ git clone https://github.com/shubhyagami/eCommerce.git
+$ cd eCommerce
+$ mvn clean package
+$ java -jar target/ecommerce-0.1.0.jar
+```
+
+The API will be available at `http://localhost:8080`.  
+Launch the static front‑end with:
+
+```bash
+cd frontend
+python -m http.server 8000
+```
+
+Navigate to `http://localhost:8000`.
 
 ---
 
@@ -18,12 +38,11 @@ The stack demonstrates JWT authentication, role‑based access, Spring Security,
 
 - [Getting started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [Clone & build](#clone--build)
-  - [Running with Docker](#running-with-docker)
-  - [Running locally](#running-locally)
+  - [Docker](#docker)
+  - [Local setup](#local-setup)
 - [Features](#features)
 - [Running tests](#running-tests)
-- [Development guidelines](#development-guidelines)
+- [Development](#development)
 - [Contributing](#contributing)
 - [License](#license)
 - [Changelog](#changelog)
@@ -32,96 +51,77 @@ The stack demonstrates JWT authentication, role‑based access, Spring Security,
 
 ## Getting started
 
-These instructions will get the API and a simple front‑end running on your machine.
-
 ### Prerequisites
 
-```
-Java 17 (JDK or JRE)
-Maven 3.9+
-PostgreSQL 13+
-Git
-(Optional) Docker
-```
+- **Java 17** (JDK or JRE)
+- **Maven 3.9+**
+- **PostgreSQL 13+**
+- **Git**
+- (Optional) **Docker**
 
-> **Tip** – The repository ships with a `docker‑compose.yml`.  
-> If you prefer Docker, run:
+### Docker
+
+The repository ships with a `docker-compose.yml`.  
+Running:
 
 ```bash
 docker compose up -d
 ```
 
-> This starts the API on `localhost:8080` and a PostgreSQL instance on `localhost:5432`.
+starts the API on `localhost:8080` and a PostgreSQL instance on `localhost:5432`.
 
-### Clone & build
+### Local setup
 
-```bash
-git clone https://github.com/shubhyagami/eCommerce.git
-cd eCommerce
-```
-
-### Configure the database
-
-1. **Create a database user**:
+1. **Create a database user and schema**
 
    ```bash
    sudo -u postgres createuser -P your_user
    sudo -u postgres createdb -O your_user your_database
    ```
 
-2. **Load the schema**:
+2. **Load the schema**
 
    ```bash
    psql -U your_user -d your_database -f src/main/resources/schema.sql
    ```
 
-3. **Create application properties**:
+3. **Configure the application**
 
    ```bash
    cp src/main/resources/application.properties.example src/main/resources/application.properties
    ```
 
-   Edit the file and set:
+   Edit `application.properties` and set:
 
    ```properties
-   # PostgreSQL
    spring.datasource.url=jdbc:postgresql://localhost:5432/your_database
    spring.datasource.username=your_user
    spring.datasource.password=your_password
 
-   # JWT
    app.jwt.secret=${JWT_SECRET}
    ```
 
-   > **Security note** – Never commit a hard‑coded JWT secret. In production set the `JWT_SECRET` environment variable or use a secrets manager.
+   > **Security** – Never commit a hard‑coded JWT secret. In production set `JWT_SECRET` via an environment variable or a secrets manager.
 
-### Run
+4. **Run the application**
 
-```bash
-mvn clean package
-java -jar target/ecommerce-0.1.0.jar
-```
-
-The API is now reachable at <http://localhost:8080>.
-
-To view the static front‑end, launch any HTTP server in the `frontend/` directory, e.g.:
-
-```bash
-python -m http.server 8000
-```
-
-Then open <http://localhost:8000> in a browser.
+   ```bash
+   mvn clean package
+   java -jar target/ecommerce-0.1.0.jar
+   ```
 
 ---
 
 ## Features
 
-* **JWT authentication** – salted password hashing, role‑based access
-* **RESTful product API** – CRUD for categories, products, variants, SKUs
-* **Session‑aware cart** – persisted per user, survives browser restarts
-* **Order history** – per‑user transactions, exportable to CSV or PDF
-* **Simple front‑end** – responsive, mobile‑first design using plain HTML5/CSS
-* **CI/CD** – GitHub Actions build, test, coverage checks on every push
+| Feature | Description |
+|---------|-------------|
+| **JWT authentication** | Secure login, salted password hashing, role‑based access |
+| **RESTful product API** | CRUD for categories, products, variants, SKUs |
+| **Session‑aware cart** | Persisted per user, survives browser restarts |
+| **Order history** | User‑specific transactions, exportable to CSV or PDF |
+| **Responsive front‑end** | Plain HTML5/CSS, mobile‑first layout |
+| **CI/CD** | GitHub Actions – build, test, coverage on every push |
 
 ---
 
@@ -131,27 +131,27 @@ Then open <http://localhost:8000> in a browser.
 mvn test
 ```
 
-All unit and integration tests run automatically via GitHub Actions.
+All unit and integration tests are executed locally and via GitHub Actions.
 
 ---
 
-## Development guidelines
+## Development
 
-* Branch names: `feature/<short-name>`, `bugfix/<short-name>`, `chore/<short-name>`
-* Keep commits focused; squash before opening a PR
-* Run `mvn spotless:apply` to format and lint the code
-* Update `src/main/resources/schema.sql` when entity mappings change
-* Verify tests pass locally; CI must be green before merging
+- Branch naming convention: `feature/…`, `bugfix/…`, `chore/…`.
+- Keep commits focused; squash before opening a pull request.
+- Run `mvn spotless:apply` to format and lint the code.
+- Update `schema.sql` whenever entity mappings change.
+- Ensure all tests pass locally; CI must be green before merging.
 
 ---
 
 ## Contributing
 
-1. Fork the repository.
-2. Create a feature branch: `git checkout -b feature/awesome`.
-3. Commit and push your changes.
-4. Open a pull request with a concise description.
-5. Ensure all tests pass locally and CI is green.
+1. Fork the repository.  
+2. Create a feature branch: `git checkout -b feature/awesome`.  
+3. Commit and push your changes.  
+4. Open a pull request with a concise description.  
+5. Make sure all tests pass and CI is green.
 
 ---
 
