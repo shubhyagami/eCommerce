@@ -1,6 +1,6 @@
 # eCommerce
 
-A lightweight, full‑stack e‑commerce prototype built with **Java 17 + Spring Boot 3**.  
+A lightweight full‑stack e‑commerce prototype built with **Java 17 + Spring Boot 3**.  
 The back‑end exposes a REST API for products, categories, variants, and orders, while a vanilla HTML/CSS front‑end consumes that API.  
 The stack demonstrates JWT authentication, role‑based access, Spring Security, Spring Data JPA, and PostgreSQL.
 
@@ -15,22 +15,22 @@ The stack demonstrates JWT authentication, role‑based access, Spring Security,
 
 ## Quick start
 
-```
+```bash
 $ git clone https://github.com/shubhyagami/eCommerce.git
 $ cd eCommerce
 $ mvn clean package
 $ java -jar target/ecommerce-0.1.0.jar
 ```
 
-The API will be available at `http://localhost:8080`.  
-Launch the static front‑end with:
+The API is available at `http://localhost:8080`.  
+To start the static front‑end:
 
 ```bash
 cd frontend
 python -m http.server 8000
 ```
 
-Navigate to `http://localhost:8000`.
+Open `http://localhost:8000` in a browser.
 
 ---
 
@@ -62,7 +62,6 @@ Navigate to `http://localhost:8000`.
 ### Docker
 
 The repository ships with a `docker-compose.yml`.  
-Running:
 
 ```bash
 docker compose up -d
@@ -137,7 +136,7 @@ All unit and integration tests are executed locally and via GitHub Actions.
 
 ## Development
 
-- Branch naming convention: `feature/…`, `bugfix/…`, `chore/…`.
+- Branch naming convention: `feature/...`, `bugfix/...`, `chore/...`.
 - Keep commits focused; squash before opening a pull request.
 - Run `mvn spotless:apply` to format and lint the code.
 - Update `schema.sql` whenever entity mappings change.
