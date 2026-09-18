@@ -1,13 +1,11 @@
-[K[2m  [2mmodel openai/gpt-oss-20b failed, trying next...[0m[0m
-[K[2m  [2mmodel openai/gpt-oss-120b failed, trying next...[0m[0m
 # eCommerce
 
-A lightweight, full-stack e-commerce prototype built with **Java 17** and **Spring Boot 3**. 
+A lightweight, full‑stack e‑commerce prototype written with **Java 17** and **Spring Boot 3**.  
+The backend exposes a robust REST API for products, categories, variants, and orders, while the frontend is a clean, vanilla HTML/CSS landing page that demonstrates how the API is consumed.  
+The project showcases industry‑grade practices such as JWT authentication, role‑based access control, Spring Data JPA, and PostgreSQL persistence.
 
-This project provides a robust back-end REST API for managing products, categories, variants, and orders, paired with a clean, vanilla HTML/CSS front-end. The architecture demonstrates industry-standard implementations of JWT authentication, role-based access control (RBAC), Spring Data JPA, and PostgreSQL.
-
-![Build status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)  
-![Test status](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=test&style=flat-square)  
+![Build](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)  
+![Test](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=test&style=flat-square)  
 ![Coverage](https://img.shields.io/codecov/c/github/shubhyagami/eCommerce?style=flat-square)  
 ![License](https://img.shields.io/github/license/shubhyagami/eCommerce?style=flat-square)  
 ![Issues](https://img.shields.io/github/issues/shubhyagami/eCommerce?style=flat-square)  
@@ -15,37 +13,15 @@ This project provides a robust back-end REST API for managing products, categori
 
 ---
 
-## Quick Start
-
-To get the application up and running quickly:
-
-```bash
-# Clone the repository
-git clone https://github.com/shubhyagami/eCommerce.git
-cd eCommerce
-
-# Build and run the Spring Boot application
-mvn clean package
-java -jar target/ecommerce-0.1.0.jar
-```
-
-The API will be available at `http://localhost:8080`. To launch the static front-end:
-
-```bash
-cd frontend
-python -m http.server 8000
-```
-Then, open `http://localhost:8000` in your browser.
-
----
-
 ## Table of Contents
 
+- [Quick Start](#quick-start)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Docker Setup](#docker-setup)
-  - [Manual Local Setup](#manual-local-setup)
+  - [Local Setup](#local-setup)
 - [Features](#features)
+- [Architecture](#architecture)
 - [Testing](#testing)
 - [Development Guidelines](#development-guidelines)
 - [Contributing](#contributing)
@@ -54,57 +30,89 @@ Then, open `http://localhost:8000` in your browser.
 
 ---
 
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/shubhyagami/eCommerce.git
+cd eCommerce
+
+# Build and run the backend
+mvn clean package
+java -jar target/ecommerce-0.1.0.jar
+```
+
+The API is now available at `http://localhost:8080`.  
+The static frontend can be served locally with a simple HTTP server:
+
+```bash
+cd frontend
+python -m http.server 8000
+```
+
+Open `http://localhost:8000` in your browser to see the demo UI.
+
+---
+
 ## Getting Started
 
 ### Prerequisites
 
-- **Java 17** (JDK)
-- **Maven 3.9+**
-- **PostgreSQL 13+**
-- **Git**
-- **Docker** (Optional, recommended for fast setup)
+- Java 17 (JDK)
+- Maven 3.9+ (for building)
+- PostgreSQL 13+ (or any JDBC‑compatible database)
+- Docker (optional, for quick composition)
+- Git
 
 ### Docker Setup
 
-The easiest way to start the project is using the provided Docker Compose file, which orchestrates both the API and the database.
+The provided `docker-compose.yml` orchestrates the API and PostgreSQL:
 
 ```bash
 docker compose up -d
 ```
-Instances will be available at:
-- **API**: `http://localhost:8080`
-- **PostgreSQL**: `localhost:5432`
 
-### Manual Local Setup
+Endpoints after the stack starts:
 
-If you prefer running the services natively:
+| Service | URL |
+|---------|-----|
+| API     | `http://localhost:8080` |
+| DB      | `localhost:5432` |
 
-1. **Database Preparation**
+### Local Setup
+
+1. **Create database user and database**
+
    ```bash
    sudo -u postgres createuser -P your_user
    sudo -u postgres createdb -O your_user your_database
    ```
 
-2. **Initialize Schema**
+2. **Run the schema migration**
+
    ```bash
    psql -U your_user -d your_database -f src/main/resources/schema.sql
    ```
 
-3. **Application Configuration**
-   Copy the example properties file:
+3. **Copy example configuration**
+
    ```bash
    cp src/main/resources/application.properties.example src/main/resources/application.properties
    ```
-   Update `application.properties` with your credentials:
+
+   Edit `application.properties` with your credentials and JWT secret:
+
    ```properties
    spring.datasource.url=jdbc:postgresql://localhost:5432/your_database
    spring.datasource.username=your_user
    spring.datasource.password=your_password
    app.jwt.secret=${JWT_SECRET}
    ```
-   *Note: For security, avoid committing hard-coded secrets. Set `JWT_SECRET` as an environment variable in production.*
 
-4. **Launch**
+   **Tip:** Keep `JWT_SECRET` as an environment variable in production.
+
+4. **Build and launch**
+
    ```bash
    mvn clean package
    java -jar target/ecommerce-0.1.0.jar
@@ -115,60 +123,71 @@ If you prefer running the services natively:
 ## Features
 
 | Feature | Description |
-| :--- | :--- |
-| **JWT Authentication** | Secure login with salted password hashing and role-based access control. |
-| **Product Management** | Full RESTful CRUD API for categories, products, variants, and SKUs. |
-| **Persistent Cart** | User-aware shopping cart that persists across browser sessions. |
-| **Order Processing** | Order history tracking with support for CSV and PDF exports. |
-| **Responsive UI** | Mobile-first front-end built with clean HTML5 and CSS. |
-| **Automated CI/CD** | GitHub Actions pipeline for automated builds, testing, and coverage. |
+|---------|-------------|
+| **JWT / RBAC** | Secure authentication with salted password hashing and role‑based access control. |
+| **Product API** | CRUD for categories, products, variants, and SKUs, all exposed via REST. |
+| **Persistent Cart** | Authenticated users have a cart that survives browser sessions. |
+| **Order Operations** | Create, read, cancel, and export orders in CSV or PDF. |
+| **Responsive UI** | Lightweight, mobile‑first front‑end with pure HTML/CSS. |
+| **CI/CD** | GitHub Actions for building, testing, and reporting coverage. |
+
+---
+
+## Architecture
+
+- **Backend**: Spring Boot 3, Spring Data JPA, PostgreSQL, JWT authentication.  
+- **Frontend**: Static assets served via a simple HTTP server (no SPA framework).  
+- **Database Layer**: SQL schema in `schema.sql`; migrations handled manually or via Flyway if extended.  
+- **Security**: Roles (`ADMIN`, `CUSTOMER`) enforce access to sensitive endpoints.  
 
 ---
 
 ## Testing
 
-Run the full suite of unit and integration tests using Maven:
+Run all unit & integration tests locally:
 
 ```bash
 mvn test
 ```
-All tests are automatically validated on every push via GitHub Actions to ensure stability.
+
+Tests are automatically executed on every push by GitHub Actions. The test results are reported in the pipeline.
 
 ---
 
 ## Development Guidelines
 
-To maintain code quality, please follow these standards:
-
-- **Branching**: Use `feature/...`, `bugfix/...`, or `chore/...` prefixes.
-- **Commits**: Keep commits atomic and focused. Squash commits before creating a Pull Request.
-- **Formatting**: Run `mvn spotless:apply` to ensure consistent code style.
-- **Database**: Update `schema.sql` whenever entity mappings or table structures change.
-- **CI/CD**: Ensure all tests pass locally and the CI pipeline is green before requesting a merge.
+| Topic | Recommendation |
+|-------|----------------|
+| **Branching** | Prefix branches with `feature/`, `bugfix/`, or `chore/`. |
+| **Commits** | Keep changes atomic; squash before PR. |
+| **Style** | Run `mvn spotless:apply` before committing. |
+| **DB Changes** | Update `schema.sql` whenever entity mappings change. |
+| **CI** | All tests must pass and the build must be green before merging. |
 
 ---
 
 ## Contributing
 
-1. Fork the repository.
-2. Create your feature branch: `git checkout -b feature/your-feature-name`.
-3. Commit your changes and push to your fork.
-4. Open a Pull Request with a clear description of the changes.
-5. Ensure all tests pass and the CI status is green.
+1. Fork the repo.  
+2. Create a feature branch: `git checkout -b feature/your-feature`.  
+3. Commit changes and push: `git push -u origin feature/your-feature`.  
+4. Open a pull request with a clear title and description.  
+5. Ensure all CI checks succeed before merging.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License – see the [LICENSE](LICENSE) file.
 
 ---
 
 ## Changelog
 
 | Date | Change |
-| :--- | :--- |
-| 2026-09-17 | Polished README for clarity and improved developer onboarding. |
-| 2026-09-01 | Refactored README structure and streamlined sections. |
-| 2026-08-21 | Minor wording and documentation tweaks. |
-| 2026-08-20 | Updated CI badges and fixed table formatting. |
+|------|--------|
+| 2026‑09‑18 | Minor README cleanup and added Docker instructions. |
+| 2026‑09‑17 | Polished README for clarity and improved developer onboarding. |
+| 2026‑09‑01 | Refactored README structure and streamlined sections. |
+| 2026‑08‑21 | Minor wording and documentation tweaks. |
+| 2026‑08‑20 | Updated CI badges and fixed table formatting. |
