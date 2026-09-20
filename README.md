@@ -1,8 +1,8 @@
 # eCommerce
 
 A lightweight, full‑stack e‑commerce prototype written with **Java 17** and **Spring Boot 3**.  
-The backend exposes a robust REST API for products, categories, variants, and orders, while the frontend is a clean, vanilla HTML/CSS landing page that demonstrates how the API is consumed.  
-The project showcases industry‑grade practices such as JWT authentication, role‑based access control, Spring Data JPA, and PostgreSQL persistence.
+The backend exposes a REST API for products, categories, variants, and orders, while the frontend is a clean, vanilla HTML/CSS landing page that shows how to consume the API.  
+The project demonstrates production‑grade practices such as JWT authentication, role‑based access control, Spring Data JPA, and PostgreSQL persistence.
 
 ![Build](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)  
 ![Test](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=test&style=flat-square)  
@@ -15,11 +15,11 @@ The project showcases industry‑grade practices such as JWT authentication, rol
 
 ## Table of Contents
 
-- [Quick Start](#quick-start)
+- [Quick Setup](#quick-setup)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
-  - [Docker Setup](#docker-setup)
-  - [Local Setup](#local-setup)
+  - [Docker](#docker)
+  - [Local Development](#local-development)
 - [Features](#features)
 - [Architecture](#architecture)
 - [Testing](#testing)
@@ -30,27 +30,29 @@ The project showcases industry‑grade practices such as JWT authentication, rol
 
 ---
 
-## Quick Start
+## Quick Setup
 
 ```bash
-# Clone the repository
+# Clone the repo
 git clone https://github.com/shubhyagami/eCommerce.git
 cd eCommerce
 
-# Build and run the backend
+# Build the backend
 mvn clean package
+
+# Run the backend
 java -jar target/ecommerce-0.1.0.jar
 ```
 
-The API is now available at `http://localhost:8080`.  
-The static frontend can be served locally with a simple HTTP server:
+The API is now listening on `http://localhost:8080`.  
+Serve the demo UI locally:
 
 ```bash
 cd frontend
 python -m http.server 8000
 ```
 
-Open `http://localhost:8000` in your browser to see the demo UI.
+Open `http://localhost:8000` in a browser.
 
 ---
 
@@ -59,48 +61,47 @@ Open `http://localhost:8000` in your browser to see the demo UI.
 ### Prerequisites
 
 - Java 17 (JDK)
-- Maven 3.9+ (for building)
-- PostgreSQL 13+ (or any JDBC‑compatible database)
-- Docker (optional, for quick composition)
+- Maven 3.9+ (build)
+- PostgreSQL 13+ (or any JDBC‑compatible DB)
+- Docker (optional)
 - Git
 
-### Docker Setup
+### Docker
 
-The provided `docker-compose.yml` orchestrates the API and PostgreSQL:
+The `docker‑compose.yml` file starts the API and PostgreSQL:
 
 ```bash
 docker compose up -d
 ```
 
-Endpoints after the stack starts:
+Endpoints:
 
 | Service | URL |
 |---------|-----|
 | API     | `http://localhost:8080` |
 | DB      | `localhost:5432` |
 
-### Local Setup
+### Local Development
 
-1. **Create database user and database**
+1. **Create database user & database**
 
    ```bash
    sudo -u postgres createuser -P your_user
    sudo -u postgres createdb -O your_user your_database
    ```
 
-2. **Run the schema migration**
+2. **Run schema migration**
 
    ```bash
    psql -U your_user -d your_database -f src/main/resources/schema.sql
    ```
 
-3. **Copy example configuration**
+3. **Configure**
 
    ```bash
    cp src/main/resources/application.properties.example src/main/resources/application.properties
    ```
-
-   Edit `application.properties` with your credentials and JWT secret:
+   Edit the file with your credentials:
 
    ```properties
    spring.datasource.url=jdbc:postgresql://localhost:5432/your_database
@@ -109,9 +110,9 @@ Endpoints after the stack starts:
    app.jwt.secret=${JWT_SECRET}
    ```
 
-   **Tip:** Keep `JWT_SECRET` as an environment variable in production.
+   **Tip:** Keep `JWT_SECRET` as an environment variable.
 
-4. **Build and launch**
+4. **Build & run**
 
    ```bash
    mvn clean package
@@ -124,21 +125,21 @@ Endpoints after the stack starts:
 
 | Feature | Description |
 |---------|-------------|
-| **JWT / RBAC** | Secure authentication with salted password hashing and role‑based access control. |
-| **Product API** | CRUD for categories, products, variants, and SKUs, all exposed via REST. |
+| **JWT / RBAC** | Secure authentication with salted password hashing and role‑based access. |
+| **Product Management** | CRUD for categories, products, variants, and SKUs via REST. |
 | **Persistent Cart** | Authenticated users have a cart that survives browser sessions. |
-| **Order Operations** | Create, read, cancel, and export orders in CSV or PDF. |
-| **Responsive UI** | Lightweight, mobile‑first front‑end with pure HTML/CSS. |
-| **CI/CD** | GitHub Actions for building, testing, and reporting coverage. |
+| **Order Functions** | Create, read, cancel, and export orders as CSV or PDF. |
+| **Responsive Frontend** | Minimal, mobile‑first UI built with plain HTML/CSS. |
+| **CI/CD** | GitHub Actions for build, test, and coverage reporting. |
 
 ---
 
 ## Architecture
 
-- **Backend**: Spring Boot 3, Spring Data JPA, PostgreSQL, JWT authentication.  
-- **Frontend**: Static assets served via a simple HTTP server (no SPA framework).  
-- **Database Layer**: SQL schema in `schema.sql`; migrations handled manually or via Flyway if extended.  
-- **Security**: Roles (`ADMIN`, `CUSTOMER`) enforce access to sensitive endpoints.  
+- **Backend** – Spring Boot 3, Spring Data JPA, PostgreSQL, JWT authentication.
+- **Frontend** – Static assets served with a simple HTTP server (no SPA framework).
+- **Database** – `schema.sql` defines the schema; migrations can be extended with Flyway.
+- **Security** – Roles (`ADMIN`, `CUSTOMER`) protect sensitive endpoints.
 
 ---
 
@@ -150,7 +151,7 @@ Run all unit & integration tests locally:
 mvn test
 ```
 
-Tests are automatically executed on every push by GitHub Actions. The test results are reported in the pipeline.
+All tests execute automatically on every push via GitHub Actions.
 
 ---
 
@@ -158,27 +159,26 @@ Tests are automatically executed on every push by GitHub Actions. The test resul
 
 | Topic | Recommendation |
 |-------|----------------|
-| **Branching** | Prefix branches with `feature/`, `bugfix/`, or `chore/`. |
-| **Commits** | Keep changes atomic; squash before PR. |
-| **Style** | Run `mvn spotless:apply` before committing. |
-| **DB Changes** | Update `schema.sql` whenever entity mappings change. |
+| **Branch naming** | Use prefixes: `feature/`, `bugfix/`, `chore/`. |
+| **Commit style** | Keep changes atomic; squash before PR. |
+| **Code style** | Run `mvn spotless:apply` before committing. |
+| **Schema changes** | Update `schema.sql` for any entity mapping changes. |
 | **CI** | All tests must pass and the build must be green before merging. |
 
 ---
 
 ## Contributing
 
-1. Fork the repo.  
+1. Fork the repository.  
 2. Create a feature branch: `git checkout -b feature/your-feature`.  
-3. Commit changes and push: `git push -u origin feature/your-feature`.  
-4. Open a pull request with a clear title and description.  
-5. Ensure all CI checks succeed before merging.
+3. Commit changes, push, and open a pull request with a clear title and description.  
+4. Ensure all CI checks succeed before merging.
 
 ---
 
 ## License
 
-MIT License – see the [LICENSE](LICENSE) file.
+MIT – see the [LICENSE](LICENSE) file.
 
 ---
 
@@ -186,8 +186,9 @@ MIT License – see the [LICENSE](LICENSE) file.
 
 | Date | Change |
 |------|--------|
-| 2026‑09‑18 | Minor README cleanup and added Docker instructions. |
-| 2026‑09‑17 | Polished README for clarity and improved developer onboarding. |
-| 2026‑09‑01 | Refactored README structure and streamlined sections. |
-| 2026‑08‑21 | Minor wording and documentation tweaks. |
+| 2026‑09‑20 | Minor README cleanup and updated Docker instructions. |
+| 2026‑09‑18 | Added detailed feature table and testing section. |
+| 2026‑09‑17 | Refactored sections for clarity. |
+| 2026‑09‑01 | Simplified installation guidance. |
+| 2026‑08‑21 | Minor wording corrections. |
 | 2026‑08‑20 | Updated CI badges and fixed table formatting. |
