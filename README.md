@@ -3,8 +3,9 @@
 # eCommerce
 
 A lightweight full‑stack e‑commerce prototype built with **Java 17** and **Spring Boot 3**.  
-The backend exposes a REST API for managing products, categories, variants, and orders, while a minimal HTML/CSS front‑end demonstrates how to consume the API.  
-Production‑grade practices are in place: JWT authentication, role‑based access control, Spring Data JPA, PostgreSQL persistence, and automated CI/CD via GitHub Actions.
+The backend exposes a REST API for managing products, categories, variants, and orders.  
+A minimal HTML/CSS front‑end demonstrates how to consume the API.  
+Production‑grade patterns are in place: JWT authentication, role‑based access control, Spring Data JPA, PostgreSQL persistence, and automated CI/CD via GitHub Actions.
 
 ![Build](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=build&style=flat-square)  
 ![Test](https://img.shields.io/github/actions/workflow/status/shubhyagami/eCommerce/ci.yml?branch=main&label=test&style=flat-square)  
@@ -19,6 +20,7 @@ Production‑grade practices are in place: JWT authentication, role‑based acce
 
 - [Overview](#overview)
 - [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
   - [Quick Start with Docker](#quick-start-with-docker)
   - [Local Development (no Docker)](#local-development-no-docker)
 - [Features](#features)
@@ -32,29 +34,35 @@ Production‑grade practices are in place: JWT authentication, role‑based acce
 
 ## Overview
 
-- **Authentication** – JWT login with salted password hashing and `ADMIN`, `CUSTOMER` roles.
-- **Product Management** – Full CRUD for products, categories, and variants.
-- **Order System** – Create, view, and cancel orders; stock automatically adjusted.
-- **API Documentation** – Swagger UI available at `/swagger-ui.html`.
-- **Demo UI** – Lightweight static site in `/frontend` that consumes the API.
-- **CI/CD** – GitHub Actions build, test, and coverage checks.
+* **Authentication** – JWT login with salted password hashing and `ADMIN`/`CUSTOMER` roles.  
+* **Product Management** – Full CRUD for products, categories, and variants.  
+* **Order System** – Create, view, and cancel orders; stock is adjusted automatically.  
+* **API Documentation** – Swagger UI available at `/swagger-ui.html`.  
+* **Demo UI** – Lightweight static site in `/frontend` that consumes the API.  
+* **CI/CD** – GitHub Actions build, test, and coverage checks.
 
 ---  
 
 ## Getting Started
 
-```bash
-git clone https://github.com/shubhyagami/eCommerce.git
-cd eCommerce
-```
+### Prerequisites
+
+| Item | Minimum Version |
+|------|-----------------|
+| Java | 17 (JDK or JRE) |
+| Maven | 3.8+ |
+| Docker | 20.10+ (for Docker Compose) |
+| PostgreSQL | 14+ (local or container) |
 
 ### Quick Start with Docker
 
 ```bash
+git clone https://github.com/shubhyagami/eCommerce.git
+cd eCommerce
 docker compose up -d
 ```
 
-The API is available at <http://localhost:8080>.  
+The API runs on <http://localhost:8080>.  
 The demo UI can be served with a simple static server:
 
 ```bash
@@ -64,8 +72,7 @@ python -m http.server 8000
 
 Open <http://localhost:8000> to view the site.
 
-> **Note**  
-> The docker compose file also starts a PostgreSQL container pre‑loaded with the schema.
+> The `docker‑compose.yml` file starts a PostgreSQL container pre‑loaded with the schema.
 
 ### Local Development (no Docker)
 
@@ -118,13 +125,13 @@ Open <http://localhost:8000> to view the site.
 
 | Feature | Description |
 |---------|-------------|
-| **Authentication** | JWT login with salted password hashing and role‑based access control. |
-| **Product Management** | CRUD operations for products, categories, and variants. |
-| **Order Management** | Create, view, cancel orders; automatic stock adjustments. |
+| **Authentication** | JWT login, salted password hashing, and role‑based access control. |
+| **Product Management** | CRUD for products, categories, and variants. |
+| **Order Management** | Create, view, cancel orders; stock adjustments are automatic. |
 | **API Docs** | Swagger/OpenAPI UI at `/swagger-ui.html`. |
-| **Testing** | Unit and integration tests with 100 %+ code coverage via Codecov. |
+| **Testing** | Unit and integration tests with > 100 % coverage via Codecov. |
 | **CI/CD** | GitHub Actions build, test, and coverage checks. |
-| **Demo UI** | Simple static site consuming the API. |
+| **Demo UI** | Simple static front‑end consuming the REST API. |
 
 ---  
 
@@ -132,24 +139,25 @@ Open <http://localhost:8000> to view the site.
 
 ```
 ┌─────────────────────┐
-│ Demo Front‑End (HTML/CSS) │
+│ Demo Front‑End    │
+│ (HTML/CSS)         │
 ├─────────────────────┤
-│  Spring Boot API          │
-│   ├─ Controllers         │
-│   ├─ Services            │
-│   ├─ Repositories        │
-│   ├─ Entities            │
-│   └─ Configurations     │
+│ Spring Boot API    │
+│ ├─ Controllers     │
+│ ├─ Services        │
+│ ├─ Repositories    │
+│ ├─ Entities        │
+│ └─ Configurations │
 ├─────────────────────┤
-│  PostgreSQL 14+       │
+│ PostgreSQL 14+     │
 └─────────────────────┘
 ```
 
-- **Controllers** expose REST endpoints and handle HTTP concerns.  
-- **Services** contain business logic and enforce transactional boundaries.  
-- **Repositories** are Spring Data JPA interfaces for persistence.  
-- **Entities** map to database tables with JPA annotations.  
-- **Configurations** set up JWT, CORS, data source, and other beans.
+* **Controllers** expose REST endpoints and handle HTTP concerns.  
+* **Services** contain business logic and enforce transactional boundaries.  
+* **Repositories** are Spring Data JPA interfaces for persistence.  
+* **Entities** map to database tables with JPA annotations.  
+* **Configurations** handle JWT, CORS, data source, and other beans.
 
 ---  
 
@@ -162,7 +170,7 @@ mvn test
 ```
 
 Code coverage reports are generated in `target/site/jacoco-aggregate/index.html`.  
-Coverage is also displayed on the GitHub Actions badge and via Codecov.
+Coverage is displayed on the GitHub Actions badge and on Codecov.
 
 ---  
 
@@ -177,9 +185,9 @@ Coverage is also displayed on the GitHub Actions badge and via Codecov.
 
 ### Style
 
-- Java 17 syntax, no deprecated APIs.  
-- 4‑space indentation, sorted imports.  
-- Use camelCase for Java fields and snake_case for database columns.
+* Java 17 syntax, no deprecated APIs.  
+* 4‑space indentation, sorted imports.  
+* Use camelCase for Java fields and snake_case for database columns.
 
 ---  
 
@@ -192,8 +200,7 @@ MIT © 2026 Shubhya Yagami
 ## Changelog
 
 **0.1.0 – 2026‑09‑28**  
-- Initial release with JWT authentication and RBAC.  
-- CRUD for products, categories, variants, and orders.  
-- PostgreSQL schema and Docker‑compose setup.  
-- Minimal static front‑end demo.  
-- CI pipeline with code coverage.
+* Initial release: JWT authentication, RBAC, CRUD for products, categories, variants, and orders.  
+* PostgreSQL schema and Docker‑compose setup.  
+* Minimal static front‑end demo.  
+* CI pipeline with code coverage.
